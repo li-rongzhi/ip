@@ -1,3 +1,6 @@
+import java.time.LocalDateTime;
+import java.time.Month;
+
 public class Task {
     private boolean isDone;
     private String content;
@@ -23,5 +26,18 @@ public class Task {
     @Override
     public  String toString() {
         return "[" + get_status_icon() + "] " + this.content;
+    }
+
+    protected String time_printer(LocalDateTime time) {
+        Month month = time.getMonth();
+        int day = time.getDayOfMonth();
+        int year = time.getYear();
+        int hour = time.getHour();
+        int minute = time.getMinute();
+        return month.toString() + " " + day + " " + year + " " + hour + ":" + minute;
+    }
+
+    public LocalDateTime[] get_time_components() {
+        return new LocalDateTime[0];
     }
 }

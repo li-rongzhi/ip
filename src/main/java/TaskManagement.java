@@ -4,14 +4,22 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class TaskManagement {
+    private static DateTimeFormatter formatter_with_time = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private static DateTimeFormatter formatter_without_time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private List<Task> taskList;
     enum Keyword {
 
-        LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"),
+        LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
         TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye"), ECHO("echo");
 
         private String keyword;
@@ -42,6 +50,16 @@ public class TaskManagement {
                     this.add_task(input);
                 } else if (input.equalsIgnoreCase(Keyword.LIST.keyword)) {
                     this.list_printer();
+                } else if (input.startsWith(Keyword.CHECK.keyword)) {
+                    try {
+                        String time = input.substring(6);
+                        LocalDate formatted_time = LocalDate.parse(time, formatter_without_time);
+                        this.check_tasks(formatted_time);
+                    } catch (DateTimeParseException e) {
+                        System.out.println(new InvalidTimeFormatException(formatter_without_time).getMessage());
+                    } catch (StringIndexOutOfBoundsException e) {
+                        System.out.println(new ContentMissingException("check"));
+                    }
                 } else if (input.startsWith(Keyword.MARK.keyword + " ") && input.length() > 5
                         && input.substring(5).matches("-?\\d+")) {
                     this.mark_task(input);
@@ -58,7 +76,7 @@ public class TaskManagement {
                     throw new InvalidCommandException();
                 }
             } catch (ContentMissingException | InvalidTaskIndexException
-                     | InvalidCommandException e) {
+                     | InvalidCommandException | InvalidTimeFormatException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -72,6 +90,32 @@ public class TaskManagement {
         for (Task task : this.taskList) {
             System.out.println((index+1) + ". " + task.toString());
             index++;
+        }
+        Jarvis.horizontal_line_printer();
+    }
+
+    private void check_tasks(LocalDate time) {
+        ArrayList<Task> results = new ArrayList<>();
+        ArrayList<Integer> indexes = new ArrayList<>();
+        for (int i = 0; i < this.taskList.size(); i++) {
+            Task task = taskList.get(i);
+            if (task instanceof ToDo) {
+                continue;
+            }
+
+            LocalDateTime[] time_collection = task.get_time_components();
+            for (LocalDateTime task_time: time_collection) {
+                if (task_time.toLocalDate().isEqual(time)) {
+                    results.add(task);
+                    indexes.add(i);
+                    break;
+                }
+            }
+        }
+        Jarvis.horizontal_line_printer();
+        System.out.println("The followings are tasks on " + time.toString() + ":");
+        for (int j = 0; j < results.size(); j++) {
+            System.out.println(indexes.get(j) + ". " + results.get(j).toString());
         }
         Jarvis.horizontal_line_printer();
     }
@@ -122,7 +166,7 @@ public class TaskManagement {
         }
     }
 
-    private void add_task(String input) throws ContentMissingException, InvalidCommandException {
+    private void add_task(String input) throws ContentMissingException, InvalidCommandException, InvalidTimeFormatException {
         String keyword = input.split(" ")[0];
         String content = "";
         Task newTask = null;
@@ -148,9 +192,11 @@ public class TaskManagement {
                     if (content.equals("") || time.equals("")) {
                         throw new ContentMissingException("deadline");
                     }
-                    newTask = new Deadline(content, time);
+                    LocalDateTime formatted_time = LocalDateTime.parse(time, formatter_with_time);
+                    newTask = new Deadline(content, formatted_time);
                     this.taskList.add(newTask);
                     break;
+
                 case "event":
                     int fromIndex = input.indexOf("/from");
                     int toIndex = input.indexOf("/to");
@@ -161,15 +207,20 @@ public class TaskManagement {
                             || from.equals("") || to.equals("")) {
                         throw new ContentMissingException("event");
                     }
-                    newTask = new Event(content, from, to);
+                    LocalDateTime formatted_from = LocalDateTime.parse(from, formatter_with_time);
+                    LocalDateTime formatted_to = LocalDateTime.parse(to, formatter_with_time);
+                    newTask = new Event(content, formatted_from, formatted_to);
                     this.taskList.add(newTask);
                     break;
+
                 default:
                     throw new InvalidCommandException();
             }
             this.update_record();
         } catch (IndexOutOfBoundsException e) {
             throw new ContentMissingException(keyword);
+        } catch (DateTimeParseException e) {
+            throw new InvalidTimeFormatException(formatter_with_time);
         }
 
         Jarvis.horizontal_line_printer();
