@@ -1,4 +1,9 @@
-import java.security.Key;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
@@ -27,6 +32,7 @@ public class TaskManagement {
 
     public void operate() {
         Scanner sc = new Scanner(System.in);
+        this.reset_record();
         while (true) {
             String input = sc.nextLine();
             try {
@@ -73,9 +79,9 @@ public class TaskManagement {
     private void mark_task(String input) throws InvalidTaskIndexException {
         int index = Integer.parseInt(input.substring(5));
         try {
-
             Task target = this.taskList.get(index-1);
             target.mark();
+            this.update_record();
             Jarvis.horizontal_line_printer();
             System.out.println("Nice! I've marked this task as done:");
             System.out.println(target.toString());
@@ -90,7 +96,7 @@ public class TaskManagement {
         try {
             Task target = this.taskList.get(index-1);
             target.unmark();
-
+            update_record();
             Jarvis.horizontal_line_printer();
             System.out.println("OK, I've marked this task as not done yet:");
             System.out.println("\t" + target.toString());
@@ -106,11 +112,11 @@ public class TaskManagement {
         try {
             Task target = this.taskList.get(index-1);
             taskList.remove(index-1);
+            this.update_record();
             Jarvis.horizontal_line_printer();
             System.out.println(" Noted. I've removed this task:");
             System.out.println("\t" + target.toString());
             Jarvis.horizontal_line_printer();
-
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidTaskIndexException(index);
         }
@@ -161,6 +167,7 @@ public class TaskManagement {
                 default:
                     throw new InvalidCommandException();
             }
+            this.update_record();
         } catch (IndexOutOfBoundsException e) {
             throw new ContentMissingException(keyword);
         }
@@ -178,6 +185,31 @@ public class TaskManagement {
             System.out.println("Sir, there's nothing on the list currently.");
         } else {
             System.out.println("Now you have " + num + " tasks in the list.");
+        }
+    }
+
+    public void reset_record() {
+        String filePath = "records.txt";
+        // Convert the file path to a Path object
+        Path path = Paths.get(filePath);
+        if (Files.exists(path)) {
+            try {
+                // Delete the file
+                Files.delete(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void update_record() {
+        String filePath = "records.txt";
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+            for (Task record: this.taskList) {
+                writer.println(record.toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
