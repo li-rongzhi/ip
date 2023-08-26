@@ -1,5 +1,5 @@
 --------------------------------------------------
-Hello from Jarvis
+Hello from Jarvis.Jarvis
   _____     _       ____  __        __ ____    ____
  |_   _|   / \     |  _ \ \ \      / /|_  _|  / ___|
    | |    / _ \    | |_) | \ \    / /   | |  | (___
@@ -9,7 +9,7 @@ Hello from Jarvis
 
 What can I do for you, sir?
 --------------------------------------------------
-Task.Task Management System started
+Jarvis.Task.Jarvis.Task Management System started
 
 --------------------------------------------------
 Got it, sir. I've added this task:

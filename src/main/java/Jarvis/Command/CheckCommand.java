@@ -1,12 +1,12 @@
-package Command;
+package Jarvis.Command;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import Task.*;
-import UI.Ui;
-import Storage.Storage;
-import JarvisException.*;
+import Jarvis.Task.*;
+import Jarvis.Ui;
+import Jarvis.Storage;
+import Jarvis.JarvisException.*;
 
 public class CheckCommand extends Command {
     private String input;

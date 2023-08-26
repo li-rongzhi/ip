@@ -1,7 +1,7 @@
-package Command;
-import Task.*;
-import UI.Ui;
-import Storage.Storage;
+package Jarvis.Command;
+import Jarvis.Task.*;
+import Jarvis.Ui;
+import Jarvis.Storage;
 
 public class ListCommand extends Command {
     @Override
