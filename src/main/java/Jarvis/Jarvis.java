@@ -15,7 +15,6 @@ public class Jarvis {
         try {
             this.taskList = new TaskList(this.storage.load());
         } catch (JarvisException e) {
-            this.ui.reportError(e);
             this.taskList = new TaskList();
         }
     }
