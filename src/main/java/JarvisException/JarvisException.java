@@ -1,3 +1,5 @@
+package JarvisException;
+
 public class JarvisException extends Exception{
     @Override
     public String getMessage() {

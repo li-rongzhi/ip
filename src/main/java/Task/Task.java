@@ -1,3 +1,5 @@
+package Task;
+
 import java.time.LocalDateTime;
 import java.time.Month;
 
@@ -12,6 +14,11 @@ public class Task {
         this.isDone = false;
     }
 
+    public Task(String content, Boolean state) {
+        this.content = content;
+        this.isDone = state;
+    }
+
     public void mark() {
         this.isDone = true;
     }
@@ -19,6 +26,7 @@ public class Task {
     public void unmark() {
         this.isDone = false;
     }
+
     private String get_status_icon() {
         return (isDone ? "X" : " ");
     }
@@ -35,6 +43,10 @@ public class Task {
         int hour = time.getHour();
         int minute = time.getMinute();
         return month.toString() + " " + day + " " + year + " " + hour + ":" + minute;
+    }
+
+    public String toRecord() {
+        return "[" + get_status_icon() + "] " + this.content;
     }
 
     public LocalDateTime[] get_time_components() {

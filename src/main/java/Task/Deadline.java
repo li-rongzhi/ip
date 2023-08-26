@@ -1,8 +1,10 @@
+package Task;
+
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-public class Deadline extends Task{
+public class Deadline extends Task {
     private LocalDateTime due;
 
     public Deadline(String content, LocalDateTime due) {
@@ -10,9 +12,19 @@ public class Deadline extends Task{
         this.due = due;
     }
 
+    public Deadline(String content, LocalDateTime due, Boolean state) {
+        super(content, state);
+        this.due = due;
+    }
+
     @Override
     public LocalDateTime[] get_time_components() {
         return new LocalDateTime[]{this.due};
+    }
+
+    @Override
+    public String toRecord() {
+        return "[D]" + super.toRecord() + " (by: " + this.due + ")";
     }
 
     @Override

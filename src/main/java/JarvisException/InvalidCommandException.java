@@ -1,4 +1,8 @@
-public class InvalidCommandException extends JarvisException{
+package JarvisException;
+
+import JarvisException.JarvisException;
+
+public class InvalidCommandException extends JarvisException {
 
     @Override
     public String getMessage() {
