@@ -1,7 +1,9 @@
+package Task;
+
 import java.time.LocalDateTime;
 import java.time.Month;
 
-public class Event extends Task{
+public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;
 
@@ -11,9 +13,20 @@ public class Event extends Task{
         this.to = to;
     }
 
+    public Event(String content, LocalDateTime from, LocalDateTime to, Boolean state) {
+        super(content, state);
+        this.from = from;
+        this.to = to;
+    }
+
     @Override
     public LocalDateTime[] get_time_components() {
         return new LocalDateTime[]{this.from, this.to};
+    }
+
+    public String toRecord() {
+        return "[E]" + super.toRecord() + " (from: " +
+               this.from + " to: " + this.to + ")";
     }
     @Override
     public String toString() {

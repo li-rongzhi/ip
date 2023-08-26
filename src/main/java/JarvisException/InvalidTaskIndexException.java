@@ -1,4 +1,8 @@
-public class InvalidTaskIndexException extends JarvisException{
+package JarvisException;
+
+import JarvisException.JarvisException;
+
+public class InvalidTaskIndexException extends JarvisException {
     private int index;
 
     public InvalidTaskIndexException(int index) {

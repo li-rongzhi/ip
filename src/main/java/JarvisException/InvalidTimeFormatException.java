@@ -1,6 +1,10 @@
+package JarvisException;
+
+import JarvisException.JarvisException;
+
 import java.time.format.DateTimeFormatter;
 
-public class InvalidTimeFormatException extends JarvisException{
+public class InvalidTimeFormatException extends JarvisException {
     private DateTimeFormatter formatter;
     public InvalidTimeFormatException(DateTimeFormatter formatter) {
         super();
