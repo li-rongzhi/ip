@@ -1,8 +1,6 @@
-package Task;
+package Jarvis.Task;
 
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.Month;
 
 public class Deadline extends Task {
     private LocalDateTime due;

@@ -1,7 +1,7 @@
-package UI;
+package Jarvis;
 
-import Task.*;
-import JarvisException.*;
+import Jarvis.Task.*;
+import Jarvis.JarvisException.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class Ui {
                 + " |___/ /_/     \\_\\ |_| \\_\\    \\__/    |_____||_____/  \n";
 
         horizontal_line_printer();
-        System.out.println("Hello from Jarvis\n" + logo);
+        System.out.println("Hello from Jarvis.Jarvis\n" + logo);
         System.out.println("What can I do for you, sir?");
     }
 

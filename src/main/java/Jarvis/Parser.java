@@ -1,5 +1,7 @@
-import Command.*;
-import JarvisException.InvalidCommandException;
+package Jarvis;
+
+import Jarvis.Command.*;
+import Jarvis.JarvisException.InvalidCommandException;
 
 public class Parser {
     enum Keyword {

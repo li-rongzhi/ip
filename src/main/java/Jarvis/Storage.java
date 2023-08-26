@@ -1,8 +1,8 @@
-package Storage;
+package Jarvis;
 
-import JarvisException.RecordLoadingException;
-import JarvisException.RecordUpdateException;
-import Task.TaskList;
+import Jarvis.JarvisException.RecordLoadingException;
+import Jarvis.JarvisException.RecordUpdateException;
+import Jarvis.Task.TaskList;
 
 import java.io.*;
 import java.util.ArrayList;

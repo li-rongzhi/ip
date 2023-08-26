@@ -1,8 +1,8 @@
-package Command;
-import Task.*;
-import UI.Ui;
-import Storage.Storage;
-import JarvisException.*;
+package Jarvis.Command;
+import Jarvis.Task.*;
+import Jarvis.Ui;
+import Jarvis.Storage;
+import Jarvis.JarvisException.*;
 
 public class MarkCommand extends Command {
     private String input;
