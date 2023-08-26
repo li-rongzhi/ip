@@ -1,6 +1,6 @@
 # JARVIS project template
 
-This is a greenfield Java project built upon a template. It's named after the Java mascot _Duke_. And it is renamed as Jarvis in this project. 
+This is a greenfield Java project built upon a template project Duke. It's named after the Java mascot _Duke_. And it is renamed as Jarvis in this project. 
 Given below are instructions on how to use it.
 
 ## Setting up in Intellij
