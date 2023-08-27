@@ -26,9 +26,10 @@ public class TaskList {
     }
 
     public Task record_decoder(String record) throws RecordLoadingException {
-        if (record == null) {
+        if (record == null || record.length() <= 3) {
             return null;
         }
+        System.out.println(record);
         String type = record.substring(0, 3);
         // isDone indicates mark(True) or unmark(False)
         Boolean isDone = (record.substring(3, 6) == "[X]");
