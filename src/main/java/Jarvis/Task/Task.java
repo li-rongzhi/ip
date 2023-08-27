@@ -52,4 +52,8 @@ public class Task {
     public LocalDateTime[] get_time_components() {
         return new LocalDateTime[0];
     }
+
+    public boolean checkContent(String input) {
+        return  this.content.contains(input);
+    }
 }
