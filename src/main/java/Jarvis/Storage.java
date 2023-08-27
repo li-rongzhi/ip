@@ -38,7 +38,7 @@ public class Storage {
 
     /**
      * Update the records.
-     * @param taskList the new taskList to be stored
+     * @param taskList the new taskList to be stored.
      * @throws RecordUpdateException
      */
     public void update(TaskList taskList) throws RecordUpdateException {

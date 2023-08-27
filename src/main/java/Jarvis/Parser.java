@@ -22,8 +22,8 @@ public class Parser {
 
     /**
      * Parse the user input into a command to be executed by Jarvis chatbot.
-     * @param input the user input
-     * @return A comand to be executed by Jarvis chatbot
+     * @param input the user input.
+     * @return A comand to be executed by Jarvis chatbot.
      * @throws InvalidCommandException
      */
     public static Command parse(String input) throws InvalidCommandException {

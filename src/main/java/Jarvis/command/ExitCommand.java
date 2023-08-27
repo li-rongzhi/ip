@@ -4,7 +4,7 @@ import Jarvis.Ui;
 import Jarvis.Storage;
 
 /**
- * ExitCommand class is a subclass of Command class
+ * ExitCommand class is a subclass of Command class.
  * It is used for exiting the program.
  *
  * @author Rongzhi

@@ -34,8 +34,8 @@ public class TaskList {
 
     /**
      * Decode the record in String into a Task object.
-     * @param record a string recording a task
-     * @return a task with the recorded information
+     * @param record a string recording a task.
+     * @return a task with the recorded information.
      * @throws RecordLoadingException
      */
     public Task record_decoder(String record) throws RecordLoadingException {
@@ -79,16 +79,16 @@ public class TaskList {
 
     /**
      * Add the given task into the taskList.
-     * @param task task to be added
+     * @param task task to be added.
      */
     public void addTask(Task task) {
         this.taskList.add(task);
     }
 
     /**
-     * Delete the task with given index from the taskList
-     * @param index the index of the task to be deleted
-     * @return the task deleted
+     * Delete the task with given index from the taskList.
+     * @param index the index of the task to be deleted.
+     * @return the task deleted.
      * @throws InvalidTaskIndexException
      */
     public Task deleteTask(int index) throws InvalidTaskIndexException {
@@ -103,7 +103,7 @@ public class TaskList {
     /**
      * Mark the task with given index as done.
      * @param index
-     * @return the task marked
+     * @return the task marked.
      * @throws InvalidTaskIndexException
      */
     public Task markTask(int index) throws InvalidTaskIndexException {
@@ -119,7 +119,7 @@ public class TaskList {
     /**
      * Unmark the task with given index as not done yet.
      * @param index
-     * @return the task unmarked
+     * @return the task unmarked.
      * @throws InvalidTaskIndexException
      */
     public Task unmarkTask(int index) throws InvalidTaskIndexException {
@@ -135,7 +135,7 @@ public class TaskList {
     /**
      * Check tasks on a specific date.
      * @param time
-     * @return tasks on the given date in String
+     * @return tasks on the given date in String.
      */
     public String checkTask(LocalDate time) {
         ArrayList<Task> results = new ArrayList<>();

@@ -19,9 +19,9 @@ public class UnmarkCommand extends Command {
 
     /**
      * Execute the UnmarkCommand to unmark the task with given index.
-     * @param taskList the list of tasks currently held
-     * @param ui ui for interaction with user
-     * @param storage backup storage of the taskList
+     * @param taskList the list of tasks currently held.
+     * @param ui ui for interaction with user.
+     * @param storage backup storage of the taskList.
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage){

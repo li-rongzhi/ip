@@ -29,9 +29,9 @@ public class AddCommand extends Command {
 
     /**
      * Execute the AddCommand to add task into taskList.
-     * @param taskList the list of tasks currently held, where the new task is to be added
-     * @param ui ui for interaction with user
-     * @param storage backup storage of the taskList
+     * @param taskList the list of tasks currently held, where the new task is to be added.
+     * @param ui ui for interaction with user.
+     * @param storage backup storage of the taskList.
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
