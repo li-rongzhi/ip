@@ -1,8 +1,8 @@
-package Jarvis.Command;
-import Jarvis.Task.TaskList;
+package Jarvis.command;
+import Jarvis.task.TaskList;
 import Jarvis.Ui;
 import Jarvis.Storage;
-import Jarvis.JarvisException.*;
+import Jarvis.jarvisexception.*;
 
 public abstract class Command {
     public abstract void execute(TaskList tasks, Ui ui, Storage storage)

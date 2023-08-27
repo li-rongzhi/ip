@@ -1,24 +1,22 @@
-package Jarvis.Command;
-import Jarvis.Task.*;
+package Jarvis.command;
+import Jarvis.task.*;
 import Jarvis.Ui;
 import Jarvis.Storage;
-import Jarvis.JarvisException.*;
+import Jarvis.jarvisexception.*;
 
-public class MarkCommand extends Command {
+public class DeleteCommand extends Command {
     private String input;
 
-    public MarkCommand(String input) {
+    public DeleteCommand(String input) {
         this.input = input;
     }
-
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage){
-        int index = Integer.parseInt(this.input.substring(5));
+        int index = Integer.parseInt(this.input.substring(7));
         try {
-            Task target = taskList.markTask(index);
-            target.mark();
+            Task target = taskList.deleteTask(index-1);
             storage.update(taskList);
-            ui.reportTaskMarked(target);
+            ui.reportTaskDeleted(target);
         } catch (JarvisException e) {
             ui.reportError(e);
         }

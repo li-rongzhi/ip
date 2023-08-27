@@ -1,7 +1,7 @@
 package Jarvis;
 
-import Jarvis.Task.*;
-import Jarvis.JarvisException.*;
+import Jarvis.task.*;
+import Jarvis.jarvisexception.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 

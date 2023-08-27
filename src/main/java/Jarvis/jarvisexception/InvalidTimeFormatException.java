@@ -1,4 +1,4 @@
-package Jarvis.JarvisException;
+package Jarvis.jarvisexception;
 
 import java.time.format.DateTimeFormatter;
 

@@ -1,4 +1,4 @@
-package Jarvis.JarvisException;
+package Jarvis.jarvisexception;
 
 public class ContentMissingException extends JarvisException {
     private String type;
