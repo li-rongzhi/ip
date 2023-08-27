@@ -1,4 +1,4 @@
-package Jarvis.Task;
+package Jarvis.task;
 
 import org.junit.jupiter.api.Test;
 

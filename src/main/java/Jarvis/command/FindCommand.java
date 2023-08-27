@@ -1,9 +1,8 @@
-package Jarvis.Command;
+package Jarvis.command;
 
-import Jarvis.JarvisException.ContentMissingException;
+import Jarvis.jarvisexception.ContentMissingException;
 import Jarvis.Storage;
-import Jarvis.Task.Task;
-import Jarvis.Task.TaskList;
+import Jarvis.task.TaskList;
 import Jarvis.Ui;
 
 /**

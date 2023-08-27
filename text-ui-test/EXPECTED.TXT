@@ -9,7 +9,7 @@ Hello from Jarvis.Jarvis
 
 What can I do for you, sir?
 --------------------------------------------------
-Jarvis.Task.Jarvis.Task Management System started
+Jarvis.task.Jarvis.task Management System started
 
 --------------------------------------------------
 Got it, sir. I've added this task:

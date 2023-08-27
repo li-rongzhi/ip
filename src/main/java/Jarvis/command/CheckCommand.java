@@ -1,12 +1,12 @@
-package Jarvis.Command;
+package Jarvis.command;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import Jarvis.Task.*;
+import Jarvis.task.*;
 import Jarvis.Ui;
 import Jarvis.Storage;
-import Jarvis.JarvisException.*;
+import Jarvis.jarvisexception.*;
 
 /**
  * CheckCommand class is a subclass of Command class.

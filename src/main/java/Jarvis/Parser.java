@@ -1,7 +1,7 @@
 package Jarvis;
 
-import Jarvis.Command.*;
-import Jarvis.JarvisException.InvalidCommandException;
+import Jarvis.command.*;
+import Jarvis.jarvisexception.InvalidCommandException;
 
 /**
  * Parser class is used for parsing user input into a command to be executed by Jarvis chatbot.

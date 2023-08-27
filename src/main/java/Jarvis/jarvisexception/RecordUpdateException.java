@@ -1,4 +1,4 @@
-package Jarvis.JarvisException;
+package Jarvis.jarvisexception;
 
 public class RecordUpdateException extends JarvisException {
     @Override

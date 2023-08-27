@@ -1,5 +1,5 @@
-package Jarvis.Command;
-import Jarvis.Task.*;
+package Jarvis.command;
+import Jarvis.task.*;
 import Jarvis.Ui;
 import Jarvis.Storage;
 

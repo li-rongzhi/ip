@@ -1,10 +1,12 @@
-package Jarvis.Task;
-
-import Jarvis.JarvisException.*;
+package Jarvis.task;
+import Jarvis.command.*;
+import Jarvis.jarvisexception.RecordLoadingException;
+import Jarvis.jarvisexception.InvalidTaskIndexException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 
 /**
  * TaskList class is an abstraction of the list of tasks.
@@ -19,7 +21,7 @@ public class TaskList {
         this.taskList = new ArrayList<>();
     }
 
-    public TaskList(ArrayList<String> records) throws RecordLoadingException{
+    public TaskList(ArrayList<String> records) throws RecordLoadingException {
         this.taskList = new ArrayList<>();
 
         for (String record : records) {
@@ -159,7 +161,7 @@ public class TaskList {
         return output;
     }
 
-<<<<<<< HEAD
+
     public String findTask(String target) {
         String result = "";
         int index = 1;
@@ -171,12 +173,12 @@ public class TaskList {
         return result;
     }
 
-=======
+
     /**
      * Count number of tasks currently in the taskList.
      * @return
      */
->>>>>>> branch-A-JavaDoc
+
     public String count_taskList() {
         int num = this.taskList.size();
         if (num == 0) {

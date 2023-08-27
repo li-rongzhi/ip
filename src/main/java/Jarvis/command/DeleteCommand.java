@@ -1,8 +1,8 @@
-package Jarvis.Command;
-import Jarvis.Task.*;
+package Jarvis.command;
+import Jarvis.task.*;
 import Jarvis.Ui;
 import Jarvis.Storage;
-import Jarvis.JarvisException.*;
+import Jarvis.jarvisexception.*;
 
 /**
  * DeleteCommand class is a subclass of Command class.

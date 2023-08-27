@@ -1,4 +1,4 @@
-package Jarvis.JarvisException;
+package Jarvis.jarvisexception;
 
 public class RecordLoadingException extends JarvisException {
     @Override

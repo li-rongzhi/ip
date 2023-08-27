@@ -1,8 +1,8 @@
 package Jarvis;
 
-import Jarvis.Command.Command;
-import Jarvis.JarvisException.JarvisException;
-import Jarvis.Task.TaskList;
+import Jarvis.command.Command;
+import Jarvis.jarvisexception.JarvisException;
+import Jarvis.task.TaskList;
 
 /**
  * Jarvis is the entry class of Jarvis chatbot.

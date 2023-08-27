@@ -1,4 +1,4 @@
-package Jarvis.Task;
+package Jarvis.task;
 
 /**
  * ToDo class is a subclass of Task class.
