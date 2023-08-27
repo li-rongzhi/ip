@@ -4,6 +4,12 @@ import Jarvis.Ui;
 import Jarvis.Storage;
 import Jarvis.JarvisException.*;
 
+/**
+ * UnmarkCommand class is a subclass of Command class.
+ * It is used for unmarking a specific task as done.
+ *
+ * @author Rongzhi
+ */
 public class UnmarkCommand extends Command {
     private String input;
 
@@ -11,6 +17,12 @@ public class UnmarkCommand extends Command {
         this.input = input;
     }
 
+    /**
+     * Execute the UnmarkCommand to unmark the task with given index.
+     * @param taskList the list of tasks currently held
+     * @param ui ui for interaction with user
+     * @param storage backup storage of the taskList
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage){
         int index = Integer.parseInt(this.input.substring(7));

@@ -4,10 +4,17 @@ import Jarvis.Command.Command;
 import Jarvis.JarvisException.JarvisException;
 import Jarvis.Task.TaskList;
 
+/**
+ * Jarvis is the entry class of Jarvis chatbot.
+ * Jarvis could be used for task tracking.
+ *
+ * @author Rongzhi
+ */
 public class Jarvis {
     private Storage storage;
     private TaskList taskList;
     private Ui ui;
+
 
     public Jarvis(String filePath) {
         this.ui = new Ui();
@@ -19,6 +26,9 @@ public class Jarvis {
         }
     }
 
+    /**
+     * Run Jarvis chatbot.
+     */
     public void run() {
         this.ui.greet();
         boolean isExit = false;

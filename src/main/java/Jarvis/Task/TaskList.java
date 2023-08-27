@@ -6,6 +6,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+/**
+ * TaskList class is an abstraction of the list of tasks.
+ *
+ * @author Rongzhi
+ */
 public class TaskList {
     private ArrayList<Task> taskList;
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
@@ -25,6 +30,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Decode the record in String into a Task object.
+     * @param record a string recording a task
+     * @return a task with the recorded information
+     * @throws RecordLoadingException
+     */
     public Task record_decoder(String record) throws RecordLoadingException {
         if (record == null || record.length() <= 3) {
             return null;
@@ -64,10 +75,20 @@ public class TaskList {
         return task;
     }
 
+    /**
+     * Add the given task into the taskList.
+     * @param task task to be added
+     */
     public void addTask(Task task) {
         this.taskList.add(task);
     }
 
+    /**
+     * Delete the task with given index from the taskList
+     * @param index the index of the task to be deleted
+     * @return the task deleted
+     * @throws InvalidTaskIndexException
+     */
     public Task deleteTask(int index) throws InvalidTaskIndexException {
         try {
             Task target = this.taskList.remove(index);
@@ -77,6 +98,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Mark the task with given index as done.
+     * @param index
+     * @return the task marked
+     * @throws InvalidTaskIndexException
+     */
     public Task markTask(int index) throws InvalidTaskIndexException {
         try {
             Task target = taskList.get(index-1);
@@ -87,6 +114,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Unmark the task with given index as not done yet.
+     * @param index
+     * @return the task unmarked
+     * @throws InvalidTaskIndexException
+     */
     public Task unmarkTask(int index) throws InvalidTaskIndexException {
         try {
             Task target = taskList.get(index-1);
@@ -97,6 +130,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Check tasks on a specific date.
+     * @param time
+     * @return tasks on the given date in String
+     */
     public String checkTask(LocalDate time) {
         ArrayList<Task> results = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
@@ -121,6 +159,7 @@ public class TaskList {
         return output;
     }
 
+<<<<<<< HEAD
     public String findTask(String target) {
         String result = "";
         int index = 1;
@@ -132,6 +171,12 @@ public class TaskList {
         return result;
     }
 
+=======
+    /**
+     * Count number of tasks currently in the taskList.
+     * @return
+     */
+>>>>>>> branch-A-JavaDoc
     public String count_taskList() {
         int num = this.taskList.size();
         if (num == 0) {
@@ -142,7 +187,10 @@ public class TaskList {
     }
 
 
-
+    /**
+     * Get the whole taskList in display format.
+     * @return
+     */
     public String displayList() {
         String results = "";
         int index = 0;
@@ -153,6 +201,10 @@ public class TaskList {
         return results;
     }
 
+    /**
+     * Get the whole taskList in record format.
+     * @return
+     */
     public String toRecord() {
         String results = "";
         for (Task task: this.taskList) {

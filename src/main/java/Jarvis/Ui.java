@@ -5,6 +5,11 @@ import Jarvis.JarvisException.*;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * Ui is an interface for interaction with the user.
+ *
+ * @author Rongzhi
+ */
 public class Ui {
     public void greet() {
         String logo = "  _____     _       ____  __        __ ____    ____    \n"

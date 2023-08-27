@@ -4,6 +4,12 @@ import Jarvis.Ui;
 import Jarvis.Storage;
 import Jarvis.JarvisException.*;
 
+/**
+ * MarkCommand class is a subclass of Command class.
+ * It is used for marking a specific task as done.
+ *
+ * @author Rongzhi
+ */
 public class MarkCommand extends Command {
     private String input;
 
@@ -11,6 +17,13 @@ public class MarkCommand extends Command {
         this.input = input;
     }
 
+
+    /**
+     * Execute the MarkCommand to mark the task with given index.
+     * @param taskList the list of tasks currently held
+     * @param ui ui for interaction with user
+     * @param storage backup storage of the taskList
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage){
         int index = Integer.parseInt(this.input.substring(5));
