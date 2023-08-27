@@ -2,6 +2,12 @@ package Jarvis.Task;
 
 import java.time.LocalDateTime;
 
+/**
+ * Event class is a subclass of Task class.
+ * Event is a type of Task with a time period (from and to).
+ *
+ * @author Rongzhi
+ */
 public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;

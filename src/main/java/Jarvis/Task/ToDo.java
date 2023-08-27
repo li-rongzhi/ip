@@ -1,5 +1,11 @@
 package Jarvis.Task;
 
+/**
+ * ToDo class is a subclass of Task class.
+ * ToDo is a type of Task without time information.
+ *
+ * @author Rongzhi
+ */
 public class ToDo extends Task {
     public ToDo(String content) {
         super(content);

@@ -2,6 +2,12 @@ package Jarvis.Task;
 
 import java.time.LocalDateTime;
 
+/**
+ * Deadline class is a subclass of Task class.
+ * Deadline is a type of Task with a due time (due).
+ *
+ * @author Rongzhi
+ */
 public class Deadline extends Task {
     private LocalDateTime due;
 

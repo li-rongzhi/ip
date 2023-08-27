@@ -8,6 +8,12 @@ import Jarvis.Ui;
 import Jarvis.Storage;
 import Jarvis.JarvisException.*;
 
+/**
+ * CheckCommand class is a subclass of Command class.
+ * It is used for checking tasks in the list on a specific date
+ *
+ * @author Rongzhi
+ */
 public class CheckCommand extends Command {
     private String input;
     private static DateTimeFormatter formatter_without_time = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -16,6 +22,12 @@ public class CheckCommand extends Command {
         this.input = input;
     }
 
+    /**
+     * Execute the AddCommand to add task into taskList.
+     * @param taskList the list of tasks where the search or check operation will be conducted
+     * @param ui ui for interaction with user
+     * @param storage backup storage of the taskList
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
         try {

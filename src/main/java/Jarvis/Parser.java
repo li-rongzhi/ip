@@ -3,6 +3,11 @@ package Jarvis;
 import Jarvis.Command.*;
 import Jarvis.JarvisException.InvalidCommandException;
 
+/**
+ * Parser class is used for parsing user input into a command to be executed by Jarvis chatbot.
+ *
+ * @@author Rongzhi
+ */
 public class Parser {
     enum Keyword {
         LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
@@ -15,6 +20,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Parse the user input into a command to be executed by Jarvis chatbot.
+     * @param input the user input
+     * @return A comand to be executed by Jarvis chatbot
+     * @throws InvalidCommandException
+     */
     public static Command parse(String input) throws InvalidCommandException {
         if (input.startsWith(Keyword.TODO.keyword) || input.startsWith(Keyword.DEADLINE.keyword)
                 || input.startsWith(Keyword.EVENT.keyword)) {
