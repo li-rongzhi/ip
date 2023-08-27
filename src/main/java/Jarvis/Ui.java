@@ -76,6 +76,13 @@ public class Ui {
         this.horizontal_line_printer();
     }
 
+    public void reportFindContent(String output, String target) {
+        this.horizontal_line_printer();
+        System.out.println("Sir, here are tasks related to " + target);
+        System.out.println(output);
+        this.horizontal_line_printer();
+    }
+
     public void reportError(JarvisException e) {
         System.out.println(e.getMessage());
     }

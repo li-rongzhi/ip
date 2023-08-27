@@ -6,7 +6,7 @@ import Jarvis.JarvisException.InvalidCommandException;
 public class Parser {
     enum Keyword {
         LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
-        TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye");
+        FIND("find"), TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye");
 
         private String keyword;
 
@@ -23,6 +23,8 @@ public class Parser {
             return new ListCommand();
         } else if (input.startsWith(Keyword.CHECK.keyword)) {
             return new CheckCommand(input);
+        } else if (input.startsWith(Keyword.FIND.keyword)) {
+            return new FindCommand(input);
         } else if (input.startsWith(Keyword.MARK.keyword + " ") && input.length() > 5
                 && input.substring(5).matches("-?\\d+")) {
             return new MarkCommand(input);

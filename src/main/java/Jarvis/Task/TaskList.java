@@ -121,6 +121,17 @@ public class TaskList {
         return output;
     }
 
+    public String findTask(String target) {
+        String result = "";
+        int index = 1;
+        for (Task task: this.taskList) {
+            if (task.checkContent(target)) {
+                result += index + ". " + task.toString();
+            }
+        }
+        return result;
+    }
+
     public String count_taskList() {
         int num = this.taskList.size();
         if (num == 0) {
