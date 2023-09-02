@@ -10,8 +10,11 @@ The name **Jarvis** stands for [Just A Rather Very Intelligent System](https://e
 * Store taskList in disk 
 
 **Jarvis** currently supports three kinds of tasks:
+
 *1. ToDo: without time component*
+
 *2. Deadline: with a due time*
+
 *3. Event: consists of a start time(from) and an end time(to)*
 
 The task management feature enhances Jarvis's utility by enabling users to keep track of their to-do list without leaving the chat interface.
@@ -19,12 +22,12 @@ The task management feature enhances Jarvis's utility by enabling users to keep 
 ### Features
 - [x] Basic task management operations
 - [x] Store taskList in disk
-- [ ] A nice GUI(Coming soon)
-- [ ] More exciting features...
+- [ ] A nice GUI (Coming soon)
+- [ ] More exciting features...🤩
 
 ### How to Test
 1. Install the Jarvis chatbot on your preferred platform.
-2. Run `Launcher` file to launch the chatbot 🥰
+2. Run `Launcher` file to launch the chatbot. 🥰
 
 ___
 #### If you are a Java programmer, you can also use it to practice Java. Here's the `main` method in `Launcher`:
