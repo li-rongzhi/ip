@@ -1,7 +1,7 @@
 package jarvis.command;
 
 import jarvis.Storage;
-import jarvis.Ui;
+import jarvis.gui.Ui;
 import jarvis.task.TaskList;
 
 
@@ -15,7 +15,8 @@ import jarvis.task.TaskList;
 public class ExitCommand extends Command {
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage){
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return "";
     }
 
     @Override

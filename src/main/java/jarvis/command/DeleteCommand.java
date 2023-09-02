@@ -1,7 +1,7 @@
 package jarvis.command;
 
 import jarvis.Storage;
-import jarvis.Ui;
+import jarvis.gui.Ui;
 import jarvis.jarvisexception.JarvisException;
 import jarvis.task.Task;
 import jarvis.task.TaskList;
@@ -27,14 +27,14 @@ public class DeleteCommand extends Command {
      * @param storage backup storage of the taskList.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         int index = Integer.parseInt(this.input.substring(7));
         try {
             Task target = taskList.deleteTask(index - 1);
             storage.update(taskList);
-            ui.reportTaskDeleted(target);
+            return ui.reportTaskDeleted(target);
         } catch (JarvisException e) {
-            ui.reportError(e);
+            return ui.reportError(e);
         }
     }
 

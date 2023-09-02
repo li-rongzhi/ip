@@ -1,7 +1,7 @@
 package jarvis.command;
 
 import jarvis.Storage;
-import jarvis.Ui;
+import jarvis.gui.Ui;
 import jarvis.task.TaskList;
 
 
@@ -20,8 +20,8 @@ public class ListCommand extends Command {
      * @param storage backup storage of the taskList.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.reportList(taskList);
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
+        return ui.reportList(taskList);
     }
 
     @Override
