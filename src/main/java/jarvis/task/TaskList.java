@@ -27,13 +27,24 @@ public class TaskList {
      */
     public TaskList(ArrayList<String> records) throws RecordLoadingException {
         this.taskList = new ArrayList<>();
-        for (String record : records) {
-            Task task = this.record_decoder(record);
+        String[] recordArray = records.toArray(new String[records.size()]);
+        decodeRecordBatch(recordArray);
+    }
+
+    /**
+     * Decode record in batch.
+     * @param records
+     * @return
+     */
+    private void decodeRecordBatch(String... records) throws RecordLoadingException {
+        for (String record: records) {
+            Task task = this.decodeRecord(record);
             if (task != null) {
                 this.taskList.add(task);
             }
         }
     }
+
 
     /**
      * Decode the record in String into a Task object.
@@ -41,7 +52,7 @@ public class TaskList {
      * @return a task with the recorded information.
      * @throws RecordLoadingException
      */
-    public Task record_decoder(String record) throws RecordLoadingException {
+    private Task decodeRecord(String record) throws RecordLoadingException {
         if (record == null || record.length() <= 3) {
             return null;
         }
@@ -50,7 +61,6 @@ public class TaskList {
         Boolean isDone = (record.substring(3, 6) == "[X]");
         Task task = null;
         String content;
-        System.out.println(record);
         try {
             switch (type) {
             case "[T]":
@@ -79,7 +89,6 @@ public class TaskList {
         } catch (StringIndexOutOfBoundsException e) {
             throw new RecordLoadingException();
         }
-        System.out.println(task.toString());
         return task;
     }
 
