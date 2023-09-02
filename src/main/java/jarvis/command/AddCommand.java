@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 import jarvis.Storage;
-import jarvis.Ui;
+import jarvis.gui.Ui;
 import jarvis.jarvisexception.ContentMissingException;
 import jarvis.jarvisexception.InvalidCommandException;
 import jarvis.jarvisexception.InvalidTimeFormatException;
@@ -39,7 +39,7 @@ public class AddCommand extends Command {
      * @param storage backup storage of the taskList.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         String keyword = input.split(" ")[0];
         String content = "";
         Task task = null;
@@ -86,15 +86,14 @@ public class AddCommand extends Command {
                 throw new InvalidCommandException();
             }
             storage.update(taskList);
-            ui.reportTaskAdded(taskList, task);
+            return ui.reportTaskAdded(taskList, task);
         } catch (IndexOutOfBoundsException e) {
-            ui.reportError(new ContentMissingException(keyword));
+            return ui.reportError(new ContentMissingException(keyword));
         } catch (DateTimeParseException e) {
-            ui.reportError(new InvalidTimeFormatException(formatterWithTime));
+            return ui.reportError(new InvalidTimeFormatException(formatterWithTime));
         } catch (JarvisException e) {
-            ui.reportError(e);
+            return ui.reportError(e);
         }
-
     }
 
     @Override

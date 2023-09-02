@@ -1,7 +1,7 @@
 package jarvis.command;
 
 import jarvis.Storage;
-import jarvis.Ui;
+import jarvis.gui.Ui;
 import jarvis.jarvisexception.JarvisException;
 import jarvis.task.Task;
 import jarvis.task.TaskList;
@@ -26,15 +26,15 @@ public class UnmarkCommand extends Command {
      * @param storage backup storage of the taskList.
      */
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
+    public String execute(TaskList taskList, Ui ui, Storage storage) {
         int index = Integer.parseInt(this.input.substring(7));
         try {
             Task target = taskList.unmarkTask(index);
             target.unmark();
             storage.update(taskList);
-            ui.reportTaskUnmarked(target);
+            return ui.reportTaskUnmarked(target);
         } catch (JarvisException e) {
-            ui.reportError(e);
+            return ui.reportError(e);
         }
     }
 

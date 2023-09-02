@@ -27,9 +27,8 @@ public class TaskList {
      */
     public TaskList(ArrayList<String> records) throws RecordLoadingException {
         this.taskList = new ArrayList<>();
-
         for (String record : records) {
-            Task task = record_decoder(record);
+            Task task = this.record_decoder(record);
             if (task != null) {
                 this.taskList.add(task);
             }
@@ -46,12 +45,12 @@ public class TaskList {
         if (record == null || record.length() <= 3) {
             return null;
         }
-        System.out.println(record);
         String type = record.substring(0, 3);
         // isDone indicates mark(True) or unmark(False)
         Boolean isDone = (record.substring(3, 6) == "[X]");
         Task task = null;
         String content;
+        System.out.println(record);
         try {
             switch (type) {
             case "[T]":
@@ -59,9 +58,9 @@ public class TaskList {
                 task = new ToDo(content, isDone);
                 break;
             case "[D]":
-                int splitPoint = record.indexOf("(by:");
-                content = record.substring(7, splitPoint);
-                String time = record.substring(splitPoint + 5, -1).trim();
+                int splitPoint = record.indexOf(" (by: ");
+                content = record.substring(7, splitPoint).trim();
+                String time = record.substring(splitPoint + 6, record.length() - 1).trim();
                 LocalDateTime deadline = LocalDateTime.parse(time, formatter);
                 task = new Deadline(content, deadline, isDone);
                 break;
@@ -80,6 +79,7 @@ public class TaskList {
         } catch (StringIndexOutOfBoundsException e) {
             throw new RecordLoadingException();
         }
+        System.out.println(task.toString());
         return task;
     }
 
