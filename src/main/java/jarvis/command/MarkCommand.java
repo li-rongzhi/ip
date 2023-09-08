@@ -1,5 +1,6 @@
 package jarvis.command;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.JarvisException;
@@ -19,6 +20,9 @@ public class MarkCommand extends Command {
     private String input;
 
     public MarkCommand(String input) {
+        assert input.startsWith(Parser.Keyword.MARK.getKeyword() + " ") && input.length() > 5
+                && input.substring(5).matches("-?\\d+"):
+                "Invalid input for MarkCommand";
         this.input = input;
     }
 
