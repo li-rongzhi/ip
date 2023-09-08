@@ -17,7 +17,7 @@ import jarvis.jarvisexception.InvalidCommandException;
  * @@author Rongzhi
  */
 public class Parser {
-    enum Keyword {
+    public enum Keyword {
         LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
         FIND("find"), TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye");
 
@@ -25,6 +25,10 @@ public class Parser {
 
         private Keyword(String keyword) {
             this.keyword = keyword;
+        }
+
+        public String getKeyword() {
+            return this.keyword;
         }
     }
 

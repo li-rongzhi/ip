@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.ContentMissingException;
@@ -29,6 +30,9 @@ public class AddCommand extends Command {
     private static DateTimeFormatter formatterWithTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private String input;
     public AddCommand(String input) {
+        assert input.startsWith(Parser.Keyword.TODO.getKeyword()) || input.startsWith(Parser.Keyword.DEADLINE.getKeyword())
+                || input.startsWith(Parser.Keyword.EVENT.getKeyword()):
+                "Invalid input for AddCommand";
         this.input = input;
     }
 

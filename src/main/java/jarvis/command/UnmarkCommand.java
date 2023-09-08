@@ -1,5 +1,6 @@
 package jarvis.command;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.JarvisException;
@@ -16,6 +17,9 @@ public class UnmarkCommand extends Command {
     private String input;
 
     public UnmarkCommand(String input) {
+        assert input.startsWith(Parser.Keyword.UNMARK.getKeyword()+ " ") && input.length() > 7
+                && input.substring(7).matches("-?\\d+"):
+                "Invalid input for UnmarkCommand";
         this.input = input;
     }
 

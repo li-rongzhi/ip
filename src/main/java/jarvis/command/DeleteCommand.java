@@ -1,5 +1,6 @@
 package jarvis.command;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.JarvisException;
@@ -17,6 +18,9 @@ public class DeleteCommand extends Command {
     private String input;
 
     public DeleteCommand(String input) {
+        assert input.startsWith(Parser.Keyword.DELETE.getKeyword() + " ") && input.length() > 7
+                && input.substring(7).matches("-?\\d+"):
+                "Invalid input for DeleteCommand";
         this.input = input;
     }
 
