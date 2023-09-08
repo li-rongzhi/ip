@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.ContentMissingException;
@@ -20,6 +21,8 @@ public class CheckCommand extends Command {
     private static DateTimeFormatter formatterWithoutTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String input;
     public CheckCommand(String input) {
+        assert input.startsWith(Parser.Keyword.CHECK.getKeyword()):
+                "Invalid input for CheckCommand";
         this.input = input;
     }
 
