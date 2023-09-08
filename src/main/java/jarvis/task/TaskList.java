@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import jarvis.jarvisexception.InvalidTaskIndexException;
 import jarvis.jarvisexception.RecordLoadingException;
@@ -34,7 +36,6 @@ public class TaskList {
     /**
      * Decode record in batch.
      * @param records
-     * @return
      */
     private void decodeRecordInBatch(String... records) throws RecordLoadingException {
         for (String record: records) {
@@ -156,7 +157,7 @@ public class TaskList {
         ArrayList<Task> results = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
         for (int i = 0; i < this.taskList.size(); i++) {
-            Task task = taskList.get(i);
+            Task task = this.taskList.get(i);
             if (task instanceof ToDo) {
                 continue;
             }
@@ -169,11 +170,9 @@ public class TaskList {
                 }
             }
         }
-        String output = "";
-        for (int j = 0; j < results.size(); j++) {
-            output += (indexes.get(j) + 1) + ". " + results.get(j).toString() + "\n";
-        }
-        return output;
+        return IntStream.range(0, results.size())
+                .mapToObj(j -> (indexes.get(j) + 1) + ". " + results.get(j).toString())
+                .collect(Collectors.joining("\n"));
     }
 
 
@@ -183,14 +182,10 @@ public class TaskList {
      * @return A formatted string containing matching task descriptions along with their indexes.
      */
     public String findTask(String target) {
-        String result = "";
-        int index = 1;
-        for (Task task: this.taskList) {
-            if (task.checkContent(target)) {
-                result += index + ". " + task.toString();
-            }
-        }
-        return result;
+        return IntStream.range(0, this.taskList.size())
+                .filter(index -> this.taskList.get(index).checkContent(target))
+                .mapToObj(index -> (index + 1) + ". " + this.taskList.get(index).toString())
+                .collect(Collectors.joining("\n"));
     }
 
 
@@ -214,13 +209,9 @@ public class TaskList {
      * @return The taskList in display format.
      */
     public String displayList() {
-        String results = "";
-        int index = 0;
-        for (Task task: this.taskList) {
-            results += (index + 1) + ". " + task.toString() + "\n";
-            index++;
-        }
-        return results;
+        return IntStream.range(0, this.taskList.size())
+                .mapToObj(index -> (index + 1) + ". " + this.taskList.get(index).toString())
+                .collect(Collectors.joining("\n"));
     }
 
     /**
@@ -228,19 +219,15 @@ public class TaskList {
      * @return The taskList in record format.
      */
     public String toRecord() {
-        String results = "";
-        for (Task task: this.taskList) {
-            results += task.toRecord() + "\n";
-        }
-        return results;
+        return this.taskList.stream()
+                .map(Task::toRecord)
+                .collect(Collectors.joining("\n"));
     }
 
     @Override
     public String toString() {
-        String results = "";
-        for (Task task: this.taskList) {
-            results += task.toString() + "\n";
-        }
-        return results;
+        return taskList.stream()
+                .map(Task::toString)
+                .collect(Collectors.joining("\n"));
     }
 }
