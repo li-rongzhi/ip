@@ -124,7 +124,7 @@ public class TaskList {
      */
     public Task markTask(int index) throws InvalidTaskIndexException {
         try {
-            Task target = taskList.get(index - 1);
+            Task target = this.taskList.get(index - 1);
             target.mark();
             return target;
         } catch (IndexOutOfBoundsException e) {
@@ -140,7 +140,7 @@ public class TaskList {
      */
     public Task unmarkTask(int index) throws InvalidTaskIndexException {
         try {
-            Task target = taskList.get(index - 1);
+            Task target = this.taskList.get(index - 1);
             target.unmark();
             return target;
         } catch (IndexOutOfBoundsException e) {
@@ -193,7 +193,6 @@ public class TaskList {
      * Count number of tasks currently in the taskList.
      * @return The number of tasks in the taskList.
      */
-
     public String countTaskList() {
         int num = this.taskList.size();
         if (num == 0) {
@@ -226,7 +225,7 @@ public class TaskList {
 
     @Override
     public String toString() {
-        return taskList.stream()
+        return this.taskList.stream()
                 .map(Task::toString)
                 .collect(Collectors.joining("\n"));
     }
