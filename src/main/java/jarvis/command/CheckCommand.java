@@ -20,9 +20,14 @@ import jarvis.task.TaskList;
 public class CheckCommand extends Command {
     private static DateTimeFormatter formatterWithoutTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String input;
+
+    /**
+     * Create a CheckCommand.
+     * @param input The user input.
+     */
     public CheckCommand(String input) {
-        assert input.startsWith(Parser.Keyword.CHECK.getKeyword()):
-                "Invalid input for CheckCommand";
+        assert input.startsWith(Parser.Keyword.CHECK.getKeyword())
+                : "Invalid input for CheckCommand";
         this.input = input;
     }
 

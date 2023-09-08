@@ -17,10 +17,14 @@ import jarvis.task.TaskList;
 public class DeleteCommand extends Command {
     private String input;
 
+    /**
+     * Create a DeleteCommand.
+     * @param input The user input.
+     */
     public DeleteCommand(String input) {
         assert input.startsWith(Parser.Keyword.DELETE.getKeyword() + " ") && input.length() > 7
-                && input.substring(7).matches("-?\\d+"):
-                "Invalid input for DeleteCommand";
+                && input.substring(7).matches("-?\\d+")
+                : "Invalid input for DeleteCommand";
         this.input = input;
     }
 

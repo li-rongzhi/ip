@@ -29,10 +29,16 @@ import jarvis.task.ToDo;
 public class AddCommand extends Command {
     private static DateTimeFormatter formatterWithTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private String input;
+
+    /**
+     * Create an AddCommand.
+     * @param input The user input.
+     */
     public AddCommand(String input) {
-        assert input.startsWith(Parser.Keyword.TODO.getKeyword()) || input.startsWith(Parser.Keyword.DEADLINE.getKeyword())
-                || input.startsWith(Parser.Keyword.EVENT.getKeyword()):
-                "Invalid input for AddCommand";
+        assert input.startsWith(Parser.Keyword.TODO.getKeyword())
+                || input.startsWith(Parser.Keyword.DEADLINE.getKeyword())
+                || input.startsWith(Parser.Keyword.EVENT.getKeyword())
+                : "Invalid input for AddCommand";
         this.input = input;
     }
 

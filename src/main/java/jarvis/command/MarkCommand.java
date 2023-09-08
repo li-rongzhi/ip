@@ -19,10 +19,14 @@ import jarvis.task.TaskList;
 public class MarkCommand extends Command {
     private String input;
 
+    /**
+     * Create a MarkCommand.
+     * @param input The user input.
+     */
     public MarkCommand(String input) {
         assert input.startsWith(Parser.Keyword.MARK.getKeyword() + " ") && input.length() > 5
-                && input.substring(5).matches("-?\\d+"):
-                "Invalid input for MarkCommand";
+                && input.substring(5).matches("-?\\d+")
+                : "Invalid input for MarkCommand";
         this.input = input;
     }
 

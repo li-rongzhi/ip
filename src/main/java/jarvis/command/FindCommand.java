@@ -16,9 +16,13 @@ import jarvis.task.TaskList;
 public class FindCommand extends Command {
     private String input;
 
+    /**
+     * Create a FindCommand.
+     * @param input The user input.
+     */
     public FindCommand(String input) {
-        assert input.startsWith(Parser.Keyword.FIND.getKeyword()):
-                "Invalid input for FindCommand";
+        assert input.startsWith(Parser.Keyword.FIND.getKeyword())
+                : "Invalid input for FindCommand";
         this.input = input;
     }
 

@@ -1,10 +1,12 @@
 package jarvis.task;
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
+
 
 public class ToDoTest {
     @Test
@@ -13,7 +15,7 @@ public class ToDoTest {
         ToDo temp = new ToDo("read book", true);
         assertEquals("[T][X] read book", temp.toRecord());
         temp.unmark();
-        assertEquals("[T][ ] read book",temp.toRecord());
+        assertEquals("[T][ ] read book", temp.toRecord());
         temp.mark();
         assertEquals("[T][X] read book", temp.toRecord());
     }
@@ -24,7 +26,7 @@ public class ToDoTest {
         ToDo temp = new ToDo("read book", true);
         assertEquals("[T][X] read book", temp.toString());
         temp.unmark();
-        assertEquals("[T][ ] read book",temp.toString());
+        assertEquals("[T][ ] read book", temp.toString());
         temp.mark();
         assertEquals("[T][X] read book", temp.toString());
     }

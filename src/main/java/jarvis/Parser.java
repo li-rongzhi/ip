@@ -17,6 +17,9 @@ import jarvis.jarvisexception.InvalidCommandException;
  * @author Rongzhi
  */
 public class Parser {
+    /**
+     * An enum for keywords in user input.
+     */
     public enum Keyword {
         LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
         FIND("find"), TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye");
@@ -63,9 +66,8 @@ public class Parser {
 
     // Helper methods
     private boolean isAddCommand(String input) {
-        return input.startsWith(Keyword.TODO.keyword) ||
-                input.startsWith(Keyword.DEADLINE.keyword) ||
-                input.startsWith(Keyword.EVENT.keyword);
+        return input.startsWith(Keyword.TODO.keyword) || input.startsWith(Keyword.DEADLINE.keyword)
+                || input.startsWith(Keyword.EVENT.keyword);
     }
 
     private boolean isListCommand(String input) {
@@ -81,21 +83,18 @@ public class Parser {
     }
 
     private boolean isMarkCommand(String input) {
-        return input.startsWith(Keyword.MARK.keyword + " ") &&
-                input.length() > 5 &&
-                input.substring(5).matches("-?\\d+");
+        return input.startsWith(Keyword.MARK.keyword + " ") && input.length() > 5
+                && input.substring(5).matches("-?\\d+");
     }
 
     private boolean isUnmarkCommand(String input) {
-        return input.startsWith(Keyword.UNMARK.keyword + " ") &&
-                input.length() > 7 &&
-                input.substring(7).matches("-?\\d+");
+        return input.startsWith(Keyword.UNMARK.keyword + " ") && input.length() > 7
+                && input.substring(7).matches("-?\\d+");
     }
 
     private boolean isDeleteCommand(String input) {
-        return input.startsWith(Keyword.DELETE.keyword + " ") &&
-                input.length() > 7 &&
-                input.substring(7).matches("-?\\d+");
+        return input.startsWith(Keyword.DELETE.keyword + " ") && input.length() > 7
+                && input.substring(7).matches("-?\\d+");
     }
 
     private boolean isByeCommand(String input) {

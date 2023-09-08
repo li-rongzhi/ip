@@ -1,12 +1,11 @@
 package jarvis.task;
 
-import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.Test;
 public class EventTest {
     @Test
     public void toRecordTest() {
@@ -20,7 +19,7 @@ public class EventTest {
                 true);
         assertEquals("[E][X] party (from: 2023-08-27T19:00 to: 2023-08-27T22:00)", temp.toRecord());
         temp.unmark();
-        assertEquals("[E][ ] party (from: 2023-08-27T19:00 to: 2023-08-27T22:00)",temp.toRecord());
+        assertEquals("[E][ ] party (from: 2023-08-27T19:00 to: 2023-08-27T22:00)", temp.toRecord());
         temp.mark();
         assertEquals("[E][X] party (from: 2023-08-27T19:00 to: 2023-08-27T22:00)", temp.toRecord());
     }
@@ -37,7 +36,7 @@ public class EventTest {
                 true);
         assertEquals("[E][X] party (from: AUGUST 27 2023 19:0 to: AUGUST 27 2023 22:0)", temp.toString());
         temp.unmark();
-        assertEquals("[E][ ] party (from: AUGUST 27 2023 19:0 to: AUGUST 27 2023 22:0)",temp.toString());
+        assertEquals("[E][ ] party (from: AUGUST 27 2023 19:0 to: AUGUST 27 2023 22:0)", temp.toString());
         temp.mark();
         assertEquals("[E][X] party (from: AUGUST 27 2023 19:0 to: AUGUST 27 2023 22:0)", temp.toString());
     }

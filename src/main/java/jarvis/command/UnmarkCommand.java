@@ -16,10 +16,14 @@ import jarvis.task.TaskList;
 public class UnmarkCommand extends Command {
     private String input;
 
+    /**
+     * Create an UnmarkCommand.
+     * @param input The user input.
+     */
     public UnmarkCommand(String input) {
-        assert input.startsWith(Parser.Keyword.UNMARK.getKeyword()+ " ") && input.length() > 7
-                && input.substring(7).matches("-?\\d+"):
-                "Invalid input for UnmarkCommand";
+        assert input.startsWith(Parser.Keyword.UNMARK.getKeyword() + " ") && input.length() > 7
+                && input.substring(7).matches("-?\\d+")
+                : "Invalid input for UnmarkCommand";
         this.input = input;
     }
 
