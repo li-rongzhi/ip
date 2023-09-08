@@ -1,5 +1,6 @@
 package jarvis.command;
 
+import jarvis.Parser;
 import jarvis.Storage;
 import jarvis.gui.Ui;
 import jarvis.jarvisexception.ContentMissingException;
@@ -16,6 +17,8 @@ public class FindCommand extends Command {
     private String input;
 
     public FindCommand(String input) {
+        assert input.startsWith(Parser.Keyword.FIND.getKeyword()):
+                "Invalid input for FindCommand";
         this.input = input;
     }
 
