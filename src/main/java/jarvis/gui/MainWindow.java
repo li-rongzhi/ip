@@ -1,9 +1,6 @@
 package jarvis.gui;
 
-//import jarvis.command.Command;
-//import jarvis.jarvisexception.JarvisException;
 import jarvis.Jarvis;
-import jarvis.gui.DialogBox;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;

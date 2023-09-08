@@ -23,12 +23,12 @@ public class TaskList {
     /**
      * Construct a new TaskList instance.
      * @param records previous records represented in string.
-     * @throws RecordLoadingException
+     * @throws RecordLoadingException If an error occurs when loading records.
      */
     public TaskList(ArrayList<String> records) throws RecordLoadingException {
         this.taskList = new ArrayList<>();
         String[] recordArray = records.toArray(new String[records.size()]);
-        decodeRecordBatch(recordArray);
+        decodeRecordInBatch(recordArray);
     }
 
     /**
@@ -36,7 +36,7 @@ public class TaskList {
      * @param records
      * @return
      */
-    private void decodeRecordBatch(String... records) throws RecordLoadingException {
+    private void decodeRecordInBatch(String... records) throws RecordLoadingException {
         for (String record: records) {
             Task task = this.decodeRecord(record);
             if (task != null) {
@@ -104,7 +104,7 @@ public class TaskList {
      * Delete the task with given index from the taskList.
      * @param index the index of the task to be deleted.
      * @return the task deleted.
-     * @throws InvalidTaskIndexException
+     * @throws InvalidTaskIndexException If the specified target index is out of range.
      */
     public Task deleteTask(int index) throws InvalidTaskIndexException {
         try {
@@ -117,9 +117,9 @@ public class TaskList {
 
     /**
      * Mark the task with given index as done.
-     * @param index
+     * @param index The specified target index.
      * @return the task marked.
-     * @throws InvalidTaskIndexException
+     * @throws InvalidTaskIndexException If the specifies target index is out of range.
      */
     public Task markTask(int index) throws InvalidTaskIndexException {
         try {
@@ -133,9 +133,9 @@ public class TaskList {
 
     /**
      * Unmark the task with given index as not done yet.
-     * @param index
+     * @param index The specified target index.
      * @return the task unmarked.
-     * @throws InvalidTaskIndexException
+     * @throws InvalidTaskIndexException If the specifies target index is out of range.
      */
     public Task unmarkTask(int index) throws InvalidTaskIndexException {
         try {
@@ -149,7 +149,7 @@ public class TaskList {
 
     /**
      * Check tasks on a specific date.
-     * @param time
+     * @param time The specified time to be checked.
      * @return tasks on the given date in String.
      */
     public String checkTask(LocalDate time) {
@@ -196,10 +196,10 @@ public class TaskList {
 
     /**
      * Count number of tasks currently in the taskList.
-     * @return
+     * @return The number of tasks in the taskList.
      */
 
-    public String count_taskList() {
+    public String countTaskList() {
         int num = this.taskList.size();
         if (num == 0) {
             return "Sir, there's nothing on the list currently.";
@@ -211,7 +211,7 @@ public class TaskList {
 
     /**
      * Get the whole taskList in display format.
-     * @return
+     * @return The taskList in display format.
      */
     public String displayList() {
         String results = "";
@@ -225,7 +225,7 @@ public class TaskList {
 
     /**
      * Get the whole taskList in record format.
-     * @return
+     * @return The taskList in record format.
      */
     public String toRecord() {
         String results = "";
