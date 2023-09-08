@@ -24,7 +24,7 @@ public class Storage {
     /**
      * Load records from the previous storage.
      * @return A list of records in string.
-     * @throws RecordLoadingException
+     * @throws RecordLoadingException If an error occurs when loading records.
      */
     public ArrayList<String> load() throws RecordLoadingException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
@@ -42,7 +42,7 @@ public class Storage {
     /**
      * Update the records.
      * @param taskList the new taskList to be stored.
-     * @throws RecordUpdateException
+     * @throws RecordUpdateException If an error occurs when updating records.
      */
     public void update(TaskList taskList) throws RecordUpdateException {
         try (PrintWriter writer = new PrintWriter(new FileWriter(this.filePath))) {

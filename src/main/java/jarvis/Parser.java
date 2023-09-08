@@ -14,7 +14,7 @@ import jarvis.jarvisexception.InvalidCommandException;
 /**
  * Parser class is used for parsing user input into a command to be executed by Jarvis chatbot.
  *
- * @@author Rongzhi
+ * @author Rongzhi
  */
 public class Parser {
     enum Keyword {
@@ -31,32 +31,70 @@ public class Parser {
     /**
      * Parse the user input into a command to be executed by Jarvis chatbot.
      * @param input the user input.
-     * @return A comand to be executed by Jarvis chatbot.
-     * @throws InvalidCommandException
+     * @return A command to be executed by Jarvis chatbot.
+     * @throws InvalidCommandException If user input is invalid for any command.
      */
-    public static Command parse(String input) throws InvalidCommandException {
-        if (input.startsWith(Keyword.TODO.keyword) || input.startsWith(Keyword.DEADLINE.keyword)
-                || input.startsWith(Keyword.EVENT.keyword)) {
+    public Command parse(String input) throws InvalidCommandException {
+        if (isAddCommand(input)) {
             return new AddCommand(input);
-        } else if (input.equalsIgnoreCase(Keyword.LIST.keyword)) {
+        } else if (isListCommand(input)) {
             return new ListCommand();
-        } else if (input.startsWith(Keyword.CHECK.keyword)) {
+        } else if (isCheckCommand(input)) {
             return new CheckCommand(input);
-        } else if (input.startsWith(Keyword.FIND.keyword)) {
+        } else if (isFindCommand(input)) {
             return new FindCommand(input);
-        } else if (input.startsWith(Keyword.MARK.keyword + " ") && input.length() > 5
-                && input.substring(5).matches("-?\\d+")) {
+        } else if (isMarkCommand(input)) {
             return new MarkCommand(input);
-        } else if (input.startsWith(Keyword.UNMARK.keyword + " ") && input.length() > 7
-                && input.substring(7).matches("-?\\d+")) {
+        } else if (isUnmarkCommand(input)) {
             return new UnmarkCommand(input);
-        } else if (input.startsWith(Keyword.DELETE.keyword + " ") && input.length() > 7
-                && input.substring(7).matches("-?\\d+")) {
+        } else if (isDeleteCommand(input)) {
             return new DeleteCommand(input);
-        } else if (input.equalsIgnoreCase(Keyword.BYE.keyword)) {
+        } else if (isByeCommand(input)) {
             return new ExitCommand();
         } else {
             throw new InvalidCommandException();
         }
+
+    }
+
+    // Helper methods
+    private boolean isAddCommand(String input) {
+        return input.startsWith(Keyword.TODO.keyword) ||
+                input.startsWith(Keyword.DEADLINE.keyword) ||
+                input.startsWith(Keyword.EVENT.keyword);
+    }
+
+    private boolean isListCommand(String input) {
+        return input.equalsIgnoreCase(Keyword.LIST.keyword);
+    }
+
+    private boolean isCheckCommand(String input) {
+        return input.startsWith(Keyword.CHECK.keyword);
+    }
+
+    private boolean isFindCommand(String input) {
+        return input.startsWith(Keyword.FIND.keyword);
+    }
+
+    private boolean isMarkCommand(String input) {
+        return input.startsWith(Keyword.MARK.keyword + " ") &&
+                input.length() > 5 &&
+                input.substring(5).matches("-?\\d+");
+    }
+
+    private boolean isUnmarkCommand(String input) {
+        return input.startsWith(Keyword.UNMARK.keyword + " ") &&
+                input.length() > 7 &&
+                input.substring(7).matches("-?\\d+");
+    }
+
+    private boolean isDeleteCommand(String input) {
+        return input.startsWith(Keyword.DELETE.keyword + " ") &&
+                input.length() > 7 &&
+                input.substring(7).matches("-?\\d+");
+    }
+
+    private boolean isByeCommand(String input) {
+        return input.equalsIgnoreCase(Keyword.BYE.keyword);
     }
 }

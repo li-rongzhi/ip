@@ -36,7 +36,8 @@ public class Jarvis {
     }
     public String getResponse(String input) {
         try {
-            Command c = Parser.parse(input);
+            Parser parser = new Parser();
+            Command c = parser.parse(input);
             String output = c.execute(this.taskList, this.ui, this.storage);
             if (c.isExit()) {
                 return this.ui.bye();
