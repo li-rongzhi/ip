@@ -2,7 +2,7 @@
 > "Jarvis, sometimes you gotta run before you can walk." - Tony Stark
 
 ### Description
-The name **Jarvis** stands for [Just A Rather Very Intelligent System](https://en.wikipedia.org/wiki/J.A.R.V.I.S.). This pull request adds task management capabilities to the Jarvis chatbot, allowing users to
+The name **Jarvis** stands for [Just A Rather Very Intelligent System](https://en.wikipedia.org/wiki/J.A.R.V.I.S.). The current version of Jarvis chatbot, allowing users to
 * Create tasks
 * List tasks
 * Mark(unmark) tasks as completed(uncompleted)
