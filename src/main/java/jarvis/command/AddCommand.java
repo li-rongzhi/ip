@@ -12,6 +12,7 @@ import jarvis.jarvisexception.ContentMissingException;
 import jarvis.jarvisexception.InvalidCommandException;
 import jarvis.jarvisexception.InvalidTimeFormatException;
 import jarvis.jarvisexception.JarvisException;
+import jarvis.jarvisexception.TimeClashException;
 import jarvis.task.Deadline;
 import jarvis.task.Event;
 import jarvis.task.Task;
@@ -41,7 +42,6 @@ public class AddCommand extends Command {
                 : "Invalid input for AddCommand";
         this.input = input;
     }
-
     /**
      * Execute the AddCommand to add task into taskList.
      * @param taskList the list of tasks currently held, where the new task is to be added.
@@ -89,6 +89,9 @@ public class AddCommand extends Command {
                 }
                 LocalDateTime formattedFrom = LocalDateTime.parse(from, formatterWithTime);
                 LocalDateTime formattedTo = LocalDateTime.parse(to, formatterWithTime);
+                if (taskList.detectAnomalies(new LocalDateTime[]{formattedFrom, formattedTo}) != "") {
+                    throw new TimeClashException();
+                }
                 task = new Event(content, formattedFrom, formattedTo);
                 taskList.addTask(task);
                 break;

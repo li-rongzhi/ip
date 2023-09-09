@@ -223,6 +223,36 @@ public class TaskList {
                 .collect(Collectors.joining("\n"));
     }
 
+    /**
+     * Check if there exists any Event clashes with the new Event.
+     * @param timeComponents The start and end time of Event
+     * @return A string of the list of task that clashes with the new Event.
+     */
+    public String detectAnomalies(LocalDateTime[] timeComponents) {
+        ArrayList<Task> results = new ArrayList<>();
+        ArrayList<Integer> indexes = new ArrayList<>();
+        boolean isNoAnomaly = true;
+        for (int i = 0; i < this.taskList.size(); i++) {
+            Task task = this.taskList.get(i);
+            if (task instanceof Event) {
+                LocalDateTime[] existingEventTime = task.get_time_components();
+                if (existingEventTime[1].isBefore(timeComponents[0])
+                        || timeComponents[1].isBefore(existingEventTime[0])) {
+                    // No clash, intervals do not overlap
+                } else {
+                    results.add(task);
+                    indexes.add(i);
+                    isNoAnomaly = true;
+                }
+            }
+        }
+        if (isNoAnomaly) {
+            return "";
+        }
+        return IntStream.range(0, results.size())
+                .mapToObj(j -> (indexes.get(j) + 1) + ". " + results.get(j).toString())
+                .collect(Collectors.joining("\n"));
+    }
     @Override
     public String toString() {
         return this.taskList.stream()
