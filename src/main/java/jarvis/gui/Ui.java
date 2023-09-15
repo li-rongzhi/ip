@@ -19,15 +19,7 @@ public class Ui {
      * @return A greeting message.
      */
     public String greet() {
-        String logo = "  _____     _       ____  __        __ ____    ____    \n"
-                + " |_   _|   / \\     |  _ \\ \\ \\      / /|_  _|  / ___|   \n"
-                + "   | |    / _ \\    | |_) | \\ \\    / /   | |  | (___     \n"
-                + "   | |   / / \\ \\   | ___/   \\ \\  / /    | |   \\___ \\ \n"
-                + "  _| |  / ----- \\  | |\\ \\    \\ \\/ /    _| |_  ____) | \n"
-                + " |___/ /_/     \\_\\ |_| \\_\\    \\__/    |_____||_____/  \n";
-        return printHorizontalLine() + "\n"
-                + "Hello from Jarvis.Jarvis\n" + logo + "\n"
-                + "What can I do for you, sir?";
+        return "Hello from Jarvis.\n" + "What can I do for you, sir?";
     }
 
     /**
@@ -35,16 +27,7 @@ public class Ui {
      * @return A Bye message.
      */
     public String bye() {
-        return "Bye! Hope to see you again, sir." + "\n"
-                + this.printHorizontalLine();
-    }
-
-    /**
-     * Print a horizontal line.
-     * @return A horizontal line.
-     */
-    public String printHorizontalLine() {
-        return "-".repeat(50);
+        return "Bye! Hope to see you again, sir.";
     }
 
     /**
@@ -54,11 +37,8 @@ public class Ui {
      * @return A message indicating that task is added.
      */
     public String reportTaskAdded(TaskList taskList, Task task) {
-        return this.printHorizontalLine() + "\n"
-                + "Got it, sir. I've added this task: " + "\n"
-                + task.toString() + "\n"
-                + taskList.countTaskList() + "\n"
-                + this.printHorizontalLine();
+        return "Got it, sir. I've added this task: " + "\n"
+                + task.toString() + "\n" + taskList.countTaskList();
     }
 
     /**
@@ -67,10 +47,8 @@ public class Ui {
      * @return A message indicating hat the task is deleted.
      */
     public String reportTaskDeleted(Task task) {
-        return this.printHorizontalLine() + "\n"
-                + " Noted. I've removed this task:" + "\n"
-                + "\t" + task.toString() + "\n"
-                + this.printHorizontalLine();
+        return " Noted. I've removed this task:" + "\n"
+                + "\t" + task.toString();
     }
 
     /**
@@ -79,10 +57,8 @@ public class Ui {
      * @return A message indicating that the task is marked.
      */
     public String reportTaskMarked(Task task) {
-        return this.printHorizontalLine() + "\n"
-                + "Nice! I've marked this task as done:" + "\n"
-                + task.toString() + "\n"
-                + this.printHorizontalLine();
+        return "Nice! I've marked this task as done:" + "\n"
+                + task.toString();
     }
 
     /**
@@ -91,10 +67,8 @@ public class Ui {
      * @return A message indicating that the task is unmarked.
      */
     public String reportTaskUnmarked(Task task) {
-        return this.printHorizontalLine() + "\n"
-                + "Nice! I've marked this task as not done yet:" + "\n"
-                + task.toString() + "\n"
-                + this.printHorizontalLine();
+        return "Nice! I've marked this task as not done yet:" + "\n"
+                + task.toString();
     }
 
     /**
@@ -103,10 +77,8 @@ public class Ui {
      * @return The taskList in display format.
      */
     public String reportList(TaskList taskList) {
-        return this.printHorizontalLine() + "\n"
-                + "Sir, here is your list:" + "\n"
-                + taskList.displayList() + "\n"
-                + this.printHorizontalLine();
+        return "Sir, here is your list:" + "\n"
+                + taskList.displayList();
     }
 
     /**
@@ -117,14 +89,9 @@ public class Ui {
      */
     public String reportCheckDate(String output, LocalDate time) {
         if (output == "") {
-            return this.printHorizontalLine() + "\n"
-                    + "There is no task on " + time.toString() + "\n"
-                    + this.printHorizontalLine();
+            return "There is no task on " + time.toString();
         }
-        return this.printHorizontalLine() + "\n"
-                + "The followings are tasks on " + time.toString() + ":\n"
-                + output + "\n"
-                + this.printHorizontalLine();
+        return "The followings are tasks on " + time.toString() + ":\n" + output;
     }
 
     /**
@@ -134,10 +101,7 @@ public class Ui {
      * @return The output of FindCommand in display format.
      */
     public String reportFindContent(String output, String target) {
-        return this.printHorizontalLine() + "\n"
-                + "Sir, here are tasks related to " + target + "\n"
-                + output + "\n"
-                + this.printHorizontalLine();
+        return "Sir, here are tasks related to " + target + "\n" + output;
     }
 
     /**

@@ -23,7 +23,11 @@
                 <VBox fx:id="dialogContainer" prefHeight="552.0" prefWidth="388.0" style="-fx-background-color: #1c2931;" styleClass="root">
                     <opaqueInsets>
                         <Insets top="10.0" />
-                    </opaqueInsets></VBox>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets top="30.0" />
+                    </padding>
+                </VBox>
             </content>
         </ScrollPane>
     </children>
