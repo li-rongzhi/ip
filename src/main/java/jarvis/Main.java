@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * A GUI for Jarvis using fxml.
  */
 public class Main extends Application {
-    private Jarvis jarvis = new Jarvis("records.txt");
+    private final Jarvis jarvis = new Jarvis("records.txt");
 
     @Override
     public void start(Stage stage) {
