@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Author: Li Rongzhi -->
-<!-- Adapted from @elroygohjy -->
+<!-- GUI design below inspired by https://github.com/elroygohjy/ip-->
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -12,7 +11,7 @@
 
 <fx:root alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefWidth="400.0" style="-fx-background-color: transparent;" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label fx:id="dialog" alignment="BASELINE_CENTER" minHeight="-Infinity" style="-fx-background-color: #254f77; -fx-background-radius: 20;" text="Label" textFill="WHITE" wrapText="true">
+        <Label fx:id="dialog" maxWidth="250" alignment="BASELINE_CENTER" minHeight="-Infinity" style="-fx-background-color: #254f77; -fx-background-radius: 15;" text="Label" textFill="WHITE" wrapText="true">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
@@ -23,12 +22,12 @@
                 <Insets />
             </HBox.margin>
             <font>
-                <Font name="Verdana" size="12.0" />
+                <Font name="Times New Roman" size="14.0" />
             </font>
         </Label>
-        <ImageView fx:id="displayPicture" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="displayPicture" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
             <clip>
-                <Circle radius="40" centerX="40" centerY="40" />
+                <Circle radius="35" centerX="35" centerY="35" />
             </clip>
             <HBox.margin>
                 <Insets left="5.0" right="5.0" bottom="5.0"/>
