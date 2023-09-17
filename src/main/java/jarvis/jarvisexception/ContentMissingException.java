@@ -3,14 +3,16 @@ package jarvis.jarvisexception;
 /**
  * ContentMissingException is a type of JarvisException.
  * It indicates that content is missing in the user input.
+ *
  * @author Rongzhi
  */
 public class ContentMissingException extends JarvisException {
-    private String type;
+    private final String type;
 
     /**
      * Create a ContentMissingException instance.
-     * @param type the type of the task
+     *
+     * @param type The type of the task
      */
     public ContentMissingException(String type) {
         super();

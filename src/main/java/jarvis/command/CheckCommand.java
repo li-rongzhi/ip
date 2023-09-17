@@ -18,11 +18,12 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class CheckCommand extends Command {
-    private static DateTimeFormatter formatterWithoutTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private String input;
+    private static final DateTimeFormatter formatterWithoutTime = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    private final String input;
 
     /**
-     * Create a CheckCommand.
+     * Constructs a CheckCommand.
+     *
      * @param input The user input.
      */
     public CheckCommand(String input) {
@@ -32,7 +33,8 @@ public class CheckCommand extends Command {
     }
 
     /**
-     * Execute the AddCommand to add task into taskList.
+     * Executes the AddCommand to add task into taskList.
+     *
      * @param taskList the list of tasks where the search or check operation will be conducted.
      * @param ui ui for interaction with user.
      * @param storage backup storage of the taskList.

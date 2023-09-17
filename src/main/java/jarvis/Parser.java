@@ -24,9 +24,9 @@ public class Parser {
         LIST("list"), MARK("mark"), UNMARK("unmark"), DELETE("delete"), CHECK("check"),
         FIND("find"), TODO("todo"), DEADLINE("deadline"), EVENT("event"), BYE("bye");
 
-        private String keyword;
+        private final String keyword;
 
-        private Keyword(String keyword) {
+        Keyword(String keyword) {
             this.keyword = keyword;
         }
 
@@ -36,8 +36,9 @@ public class Parser {
     }
 
     /**
-     * Parse the user input into a command to be executed by Jarvis chatbot.
-     * @param input the user input.
+     * Parses the user input into a command to be executed by Jarvis chatbot.
+     *
+     * @param input The user input.
      * @return A command to be executed by Jarvis chatbot.
      * @throws InvalidCommandException If user input is invalid for any command.
      */
@@ -63,7 +64,6 @@ public class Parser {
         }
 
     }
-
     // Helper methods
     private boolean isAddCommand(String input) {
         return input.startsWith(Keyword.TODO.keyword) || input.startsWith(Keyword.DEADLINE.keyword)

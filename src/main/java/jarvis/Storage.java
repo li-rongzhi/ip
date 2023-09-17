@@ -16,15 +16,16 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class Storage {
-    private String filePath;
+    private final String filePath;
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
     /**
-     * Load records from the previous storage.
-     * @return A list of records in string.
-     * @throws RecordLoadingException If an error occurs when loading records.
+     * Loads records from the previous storage.
+     *
+     * @return A list of records as strings.
+     * @throws RecordLoadingException If an error occurs during record loading.
      */
     public ArrayList<String> load() throws RecordLoadingException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.filePath))) {
@@ -40,7 +41,8 @@ public class Storage {
     }
 
     /**
-     * Update the records.
+     * Updates the records.
+     *
      * @param taskList the new taskList to be stored.
      * @throws RecordUpdateException If an error occurs when updating records.
      */

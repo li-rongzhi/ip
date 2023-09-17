@@ -3,6 +3,7 @@ package jarvis.jarvisexception;
 /**
  * TimeClashException is a type of JarvisException.
  * It indicates that an Event being added clashes with another Event in the list.
+ *
  * @author Rongzhi
  */
 public class TimeClashException extends JarvisException {

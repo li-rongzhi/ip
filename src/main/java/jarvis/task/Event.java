@@ -9,14 +9,15 @@ import java.time.LocalDateTime;
  * @author Rongzhi
  */
 public class Event extends Task {
-    private LocalDateTime from;
-    private LocalDateTime to;
+    private final LocalDateTime from;
+    private final LocalDateTime to;
 
     /**
-     * Create an Event task instance.
-     * @param content the content of the Event.
-     * @param from start time of the event.
-     * @param to end time of the event.
+     * Constructs an Event task instance.
+     *
+     * @param content The content of the Event.
+     * @param from Start time of the event.
+     * @param to End time of the event.
      */
     public Event(String content, LocalDateTime from, LocalDateTime to) {
         super(content);
@@ -25,11 +26,12 @@ public class Event extends Task {
     }
 
     /**
-     * Create an Event task instance with state.
-     * @param content the content of the Event.
-     * @param from start time of the event.
-     * @param to end time of the event.
-     * @param state done or not done yet.
+     * Constructs an Event task instance with state.
+     *
+     * @param content The content of the Event.
+     * @param from Start time of the event.
+     * @param to End time of the event.
+     * @param state Done or not done yet.
      */
     public Event(String content, LocalDateTime from, LocalDateTime to, Boolean state) {
         super(content, state);

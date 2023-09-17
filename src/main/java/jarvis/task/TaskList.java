@@ -16,15 +16,16 @@ import jarvis.jarvisexception.RecordLoadingException;
  * @author Rongzhi
  */
 public class TaskList {
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-    private ArrayList<Task> taskList;
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+    private final ArrayList<Task> taskList;
     public TaskList() {
         this.taskList = new ArrayList<>();
     }
 
     /**
-     * Construct a new TaskList instance.
-     * @param records previous records represented in string.
+     * Constructs a new TaskList instance.
+     *
+     * @param records Previous records represented in string.
      * @throws RecordLoadingException If an error occurs when loading records.
      */
     public TaskList(ArrayList<String> records) throws RecordLoadingException {
@@ -34,8 +35,9 @@ public class TaskList {
     }
 
     /**
-     * Decode record in batch.
-     * @param records
+     * Decodes record in batch.
+     *
+     * @param records A batch of records to be decoded.
      */
     private void decodeRecordInBatch(String... records) throws RecordLoadingException {
         for (String record: records) {
@@ -48,10 +50,11 @@ public class TaskList {
 
 
     /**
-     * Decode the record in String into a Task object.
-     * @param record a string recording a task.
-     * @return a task with the recorded information.
-     * @throws RecordLoadingException
+     * Decodes the record in String into a Task object.
+     *
+     * @param record A string recording a task.
+     * @return A task with the recorded information.
+     * @throws RecordLoadingException If error occurs when decoding record.
      */
     private Task decodeRecord(String record) throws RecordLoadingException {
         if (record == null || record.length() <= 3) {
@@ -59,7 +62,7 @@ public class TaskList {
         }
         String type = record.substring(0, 3);
         // isDone indicates mark(True) or unmark(False)
-        Boolean isDone = (record.substring(3, 6) == "[X]");
+        Boolean isDone = record.startsWith("[X]", 3);
         Task task = null;
         String content;
         try {
@@ -94,23 +97,24 @@ public class TaskList {
     }
 
     /**
-     * Add the given task into the taskList.
-     * @param task task to be added.
+     * Adds the given task into the taskList.
+     *
+     * @param task Task to be added.
      */
     public void addTask(Task task) {
         this.taskList.add(task);
     }
 
     /**
-     * Delete the task with given index from the taskList.
-     * @param index the index of the task to be deleted.
-     * @return the task deleted.
+     * Deletes the task with given index from the taskList.
+     *
+     * @param index The index of the task to be deleted.
+     * @return The task deleted.
      * @throws InvalidTaskIndexException If the specified target index is out of range.
      */
     public Task deleteTask(int index) throws InvalidTaskIndexException {
         try {
-            Task target = this.taskList.remove(index);
-            return target;
+            return this.taskList.remove(index);
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidTaskIndexException(index);
         }
@@ -118,8 +122,9 @@ public class TaskList {
 
     /**
      * Mark the task with given index as done.
+     *
      * @param index The specified target index.
-     * @return the task marked.
+     * @return The task marked.
      * @throws InvalidTaskIndexException If the specifies target index is out of range.
      */
     public Task markTask(int index) throws InvalidTaskIndexException {
@@ -134,6 +139,7 @@ public class TaskList {
 
     /**
      * Unmark the task with given index as not done yet.
+     *
      * @param index The specified target index.
      * @return the task unmarked.
      * @throws InvalidTaskIndexException If the specifies target index is out of range.
@@ -150,6 +156,7 @@ public class TaskList {
 
     /**
      * Check tasks on a specific date.
+     *
      * @param time The specified time to be checked.
      * @return tasks on the given date in String.
      */
@@ -178,6 +185,7 @@ public class TaskList {
 
     /**
      * Searches for tasks in the task list that match the specified target content.
+     *
      * @param target The target content to search for in task descriptions.
      * @return A formatted string containing matching task descriptions along with their indexes.
      */
@@ -191,6 +199,7 @@ public class TaskList {
 
     /**
      * Count number of tasks currently in the taskList.
+     *
      * @return The number of tasks in the taskList.
      */
     public String countTaskList() {
@@ -205,6 +214,7 @@ public class TaskList {
 
     /**
      * Get the whole taskList in display format.
+     *
      * @return The taskList in display format.
      */
     public String displayList() {
@@ -215,6 +225,7 @@ public class TaskList {
 
     /**
      * Get the whole taskList in record format.
+     *
      * @return The taskList in record format.
      */
     public String toRecord() {
@@ -225,34 +236,36 @@ public class TaskList {
 
     /**
      * Check if there exists any Event clashes with the new Event.
+     *
      * @param timeComponents The start and end time of Event
      * @return A string of the list of task that clashes with the new Event.
      */
     public String detectAnomalies(LocalDateTime[] timeComponents) {
         ArrayList<Task> results = new ArrayList<>();
         ArrayList<Integer> indexes = new ArrayList<>();
-        boolean isNoAnomaly = true;
+        boolean existAnomaly = false;
         for (int i = 0; i < this.taskList.size(); i++) {
             Task task = this.taskList.get(i);
             if (task instanceof Event) {
                 LocalDateTime[] existingEventTime = task.get_time_components();
-                if (existingEventTime[1].isBefore(timeComponents[0])
-                        || timeComponents[1].isBefore(existingEventTime[0])) {
-                    // No clash, intervals do not overlap
-                } else {
+                if (timeComponents[0].isAfter(existingEventTime[1])
+                        || timeComponents[1].isAfter(existingEventTime[0])) {
                     results.add(task);
                     indexes.add(i);
-                    isNoAnomaly = true;
+                    existAnomaly = true;
                 }
+
             }
         }
-        if (isNoAnomaly) {
+        // if no anomaly exists
+        if (!existAnomaly) {
             return "";
         }
         return IntStream.range(0, results.size())
                 .mapToObj(j -> (indexes.get(j) + 1) + ". " + results.get(j).toString())
                 .collect(Collectors.joining("\n"));
     }
+
     @Override
     public String toString() {
         return this.taskList.stream()

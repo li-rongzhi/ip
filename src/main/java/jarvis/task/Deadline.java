@@ -9,12 +9,13 @@ import java.time.LocalDateTime;
  * @author Rongzhi
  */
 public class Deadline extends Task {
-    private LocalDateTime due;
+    private final LocalDateTime due;
 
     /**
-     * Create a Deadline task instance without state.
-     * @param content task content.
-     * @param due the due time.
+     * Constructs a Deadline task instance without state.
+     *
+     * @param content Task content.
+     * @param due The due time.
      */
     public Deadline(String content, LocalDateTime due) {
         super(content);
@@ -22,10 +23,11 @@ public class Deadline extends Task {
     }
 
     /**
-     * Create a Deadline task instance with state.
-     * @param content task content.
-     * @param due the due time.
-     * @param state done or not done yet
+     * Constructs a Deadline task instance with state.
+     *
+     * @param content Task content.
+     * @param due The due time.
+     * @param state Done or not done yet.
      */
     public Deadline(String content, LocalDateTime due, Boolean state) {
         super(content, state);

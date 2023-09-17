@@ -14,10 +14,11 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class UnmarkCommand extends Command {
-    private String input;
+    private final String input;
 
     /**
-     * Create an UnmarkCommand.
+     * Constructs an UnmarkCommand.
+     *
      * @param input The user input.
      */
     public UnmarkCommand(String input) {
@@ -28,7 +29,8 @@ public class UnmarkCommand extends Command {
     }
 
     /**
-     * Execute the UnmarkCommand to unmark the task with given index.
+     * Executes the UnmarkCommand to unmark the task with given index.
+     *
      * @param taskList the list of tasks currently held.
      * @param ui ui for interaction with user.
      * @param storage backup storage of the taskList.

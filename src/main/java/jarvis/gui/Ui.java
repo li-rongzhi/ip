@@ -15,7 +15,8 @@ import jarvis.task.TaskList;
  */
 public class Ui {
     /**
-     * Greeting the user when chatbot is launched.
+     * Greets the user when chatbot is launched.
+     *
      * @return A greeting message.
      */
     public String greet() {
@@ -23,7 +24,8 @@ public class Ui {
     }
 
     /**
-     * Say bye to the user when exits.
+     * Says bye to the user when exits.
+     *
      * @return A Bye message.
      */
     public String bye() {
@@ -31,7 +33,8 @@ public class Ui {
     }
 
     /**
-     * Report when a new task is added
+     * Reports when a new task is added.
+     *
      * @param taskList The taskList where the new task will be added.
      * @param task The new task to be added.
      * @return A message indicating that task is added.
@@ -42,7 +45,8 @@ public class Ui {
     }
 
     /**
-     * Report when a task is deleted.
+     * Reports when a task is deleted.
+     *
      * @param task The deleted task.
      * @return A message indicating hat the task is deleted.
      */
@@ -52,7 +56,8 @@ public class Ui {
     }
 
     /**
-     * Report when a task is marked.
+     * Reports when a task is marked.
+     *
      * @param task The task got marked.
      * @return A message indicating that the task is marked.
      */
@@ -62,7 +67,8 @@ public class Ui {
     }
 
     /**
-     * Report when a task is unmarked.
+     * Reports when a task is unmarked.
+     *
      * @param task The task got unmarked.
      * @return A message indicating that the task is unmarked.
      */
@@ -72,7 +78,8 @@ public class Ui {
     }
 
     /**
-     * Report the whole task list.
+     * Reports the whole task list.
+     *
      * @param taskList The taskList to be displayed.
      * @return The taskList in display format.
      */
@@ -82,20 +89,22 @@ public class Ui {
     }
 
     /**
-     * Report the result of check command.
+     * Reports the result of check command.
+     *
      * @param output The output of CheckCommand.
      * @param time The time specified to check.
      * @return The output of CheckCommand in display format.
      */
     public String reportCheckDate(String output, LocalDate time) {
-        if (output == "") {
+        if (output.equals("")) {
             return "There is no task on " + time.toString();
         }
         return "The followings are tasks on " + time.toString() + ":\n" + output;
     }
 
     /**
-     * Report the result of find command.
+     * Reports the result of find command.
+     *
      * @param output The output of FindCommand.
      * @param target The specified searching keyword.
      * @return The output of FindCommand in display format.
@@ -105,7 +114,8 @@ public class Ui {
     }
 
     /**
-     * Report an error when error occurs.
+     * Reports an error when error occurs.
+     *
      * @param e The error to be reported.
      * @return Error in display format.
      */

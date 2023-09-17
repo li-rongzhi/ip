@@ -14,10 +14,11 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class FindCommand extends Command {
-    private String input;
+    private final String input;
 
     /**
-     * Create a FindCommand.
+     * Constructs a FindCommand.
+     *
      * @param input The user input.
      */
     public FindCommand(String input) {

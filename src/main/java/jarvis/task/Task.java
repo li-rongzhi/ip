@@ -10,9 +10,10 @@ import java.time.Month;
  */
 public class Task {
     private boolean isDone;
-    private String content;
+    private final String content;
     /**
      * Constructs a new Task with the specified content.
+     *
      * @param content The content or description of the task.
      */
     public Task(String content) {
@@ -22,6 +23,7 @@ public class Task {
 
     /**
      * Constructs a new Task with the specified content.
+     *
      * @param content The content or description of the task.
      * @param state Done or not done yet.
      */
@@ -31,23 +33,24 @@ public class Task {
     }
 
     /**
-     * Mark the task as done.
+     * Marks the task as done.
      */
     public void mark() {
         this.isDone = true;
     }
 
     /**
-     * Unmark the task as not done yet.
+     * Unmarks the task as not done yet.
      */
     public void unmark() {
         this.isDone = false;
     }
 
     /**
-     * Get the status icon of the task.
+     * Gets the status icon of the task.
      * "X" stands for done while " " stands for not done yet.
-     * @return the status icon in String.
+     *
+     * @return The status icon in String.
      */
     private String get_status_icon() {
         return (isDone ? "X" : " ");
@@ -59,9 +62,10 @@ public class Task {
     }
 
     /**
-     * Transform the given time into a specific format.
-     * @param time the time to be printed.
-     * @return time in a specific format in String.
+     * Transforms the given time into a specific format.
+     *
+     * @param time The time to be printed.
+     * @return Time in a specific format in String.
      */
     protected String time_printer(LocalDateTime time) {
         Month month = time.getMonth();
@@ -73,16 +77,18 @@ public class Task {
     }
 
     /**
-     * Get the format for record storage.
-     * @return task in format for record storage.
+     * Gets the format for record storage.
+     *
+     * @return Task in format for record storage.
      */
     public String toRecord() {
         return "[" + get_status_icon() + "] " + this.content;
     }
 
     /**
-     * Get time components contained in the task.
-     * @return an array of time components.
+     * Gets time components contained in the task.
+     *
+     * @return An array of time components.
      */
     public LocalDateTime[] get_time_components() {
         return new LocalDateTime[0];

@@ -11,6 +11,7 @@ import jarvis.gui.Ui;
 import jarvis.jarvisexception.ContentMissingException;
 import jarvis.jarvisexception.InvalidCommandException;
 import jarvis.jarvisexception.InvalidTimeFormatException;
+import jarvis.jarvisexception.InvalidTimePeriodException;
 import jarvis.jarvisexception.JarvisException;
 import jarvis.jarvisexception.TimeClashException;
 import jarvis.task.Deadline;
@@ -28,8 +29,8 @@ import jarvis.task.ToDo;
  * @author Rongzhi
  */
 public class AddCommand extends Command {
-    private static DateTimeFormatter formatterWithTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    private String input;
+    private static final DateTimeFormatter formatterWithTime = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private final String input;
 
     /**
      * Create an AddCommand.
@@ -51,8 +52,8 @@ public class AddCommand extends Command {
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
         String keyword = input.split(" ")[0];
-        String content = "";
-        Task task = null;
+        String content;
+        Task task;
         try {
             switch (keyword) {
             case "todo":
@@ -89,8 +90,10 @@ public class AddCommand extends Command {
                 }
                 LocalDateTime formattedFrom = LocalDateTime.parse(from, formatterWithTime);
                 LocalDateTime formattedTo = LocalDateTime.parse(to, formatterWithTime);
-                if (taskList.detectAnomalies(new LocalDateTime[]{formattedFrom, formattedTo}) != "") {
+                if (!taskList.detectAnomalies(new LocalDateTime[]{formattedFrom, formattedTo}).equals("")) {
                     throw new TimeClashException();
+                } else if (formattedFrom.isAfter(formattedTo)) {
+                    throw new InvalidTimePeriodException();
                 }
                 task = new Event(content, formattedFrom, formattedTo);
                 taskList.addTask(task);

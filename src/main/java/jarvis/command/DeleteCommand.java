@@ -15,10 +15,11 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class DeleteCommand extends Command {
-    private String input;
+    private final String input;
 
     /**
-     * Create a DeleteCommand.
+     * Constructs a DeleteCommand.
+     *
      * @param input The user input.
      */
     public DeleteCommand(String input) {
@@ -29,10 +30,11 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Execute the ExecuteCommand to delete the target task.
-     * @param taskList the list of tasks currently held.
-     * @param ui ui for interaction with user.
-     * @param storage backup storage of the taskList.
+     * Executes the ExecuteCommand to delete the target task.
+     *
+     * @param taskList The list of tasks currently held.
+     * @param ui The ui for interaction with user.
+     * @param storage Backup storage of the taskList.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

@@ -12,14 +12,14 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class Jarvis {
-    private Storage storage;
+    private final Storage storage;
     private TaskList taskList;
-    private Ui ui;
-
+    private final Ui ui;
 
     /**
-     * Create a Jarvis instance
-     * @param filePath path of the record storage file
+     * Constructs a Jarvis instance.
+     *
+     * @param filePath Path of the record storage file.
      */
     public Jarvis(String filePath) {
         this.ui = new Ui();
@@ -34,6 +34,7 @@ public class Jarvis {
     public String getGreeting() {
         return this.ui.greet();
     }
+
     public String getResponse(String input) {
         try {
             Parser parser = new Parser();

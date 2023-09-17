@@ -5,13 +5,15 @@ import java.time.format.DateTimeFormatter;
 /**
  * InvalidTimeFormatException is a type of JarvisException.
  * It indicates that the input time format is invalid.
+ *
  * @author Rongzhi
  */
 public class InvalidTimeFormatException extends JarvisException {
-    private DateTimeFormatter formatter;
+    private final DateTimeFormatter formatter;
 
     /**
      * Create an InvalidTimeFormatException.
+     *
      * @param formatter The formatter which is supposed to be satisfied.
      */
     public InvalidTimeFormatException(DateTimeFormatter formatter) {

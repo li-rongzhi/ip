@@ -17,10 +17,11 @@ import jarvis.task.TaskList;
  * @author Rongzhi
  */
 public class MarkCommand extends Command {
-    private String input;
+    private final String input;
 
     /**
-     * Create a MarkCommand.
+     * Constructs a MarkCommand.
+     *
      * @param input The user input.
      */
     public MarkCommand(String input) {
@@ -33,9 +34,10 @@ public class MarkCommand extends Command {
 
     /**
      * Execute the MarkCommand to mark the task with given index.
-     * @param taskList the list of tasks currently held.
-     * @param ui ui for interaction with user.
-     * @param storage backup storage of the taskList.
+     *
+     * @param taskList The list of tasks currently held.
+     * @param ui The ui for interaction with user.
+     * @param storage Backup storage of the taskList.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {

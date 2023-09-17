@@ -15,9 +15,10 @@ import jarvis.task.TaskList;
 public class ListCommand extends Command {
     /**
      * Execute the ListCommand to display all tasks on the taskList.
-     * @param taskList the list of tasks currently held.
-     * @param ui ui for interaction with user.
-     * @param storage backup storage of the taskList.
+     *
+     * @param taskList The list of tasks currently held.
+     * @param ui The ui for interaction with user.
+     * @param storage Backup storage of the taskList.
      */
     @Override
     public String execute(TaskList taskList, Ui ui, Storage storage) {
